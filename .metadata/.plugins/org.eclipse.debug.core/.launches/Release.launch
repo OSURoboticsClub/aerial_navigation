@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.cdt.launch.remoteApplicationLaunchType">
+<stringAttribute key="com.nvidia.cuda.ide.remote.ui.launch.ICudaRemoteDebugConstants.executableTransfer" value="Download"/>
+<booleanAttribute key="lc.downloadso" value="true"/>
+<intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="gdbserver"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="remote"/>
+<booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Release_Host/IdentifyBalloon_Camera"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="IdentifyBalloon_Camera"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
+<booleanAttribute key="org.eclipse.cdt.launch.remote.RemoteCDSFDebuggerTab.DEFAULTS_SET" value="true"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_GDBSERVER_COMMAND" value="/usr/local/cuda-6.5/bin/cuda-gdbserver"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_GDBSERVER_PORT" value="2345"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_PRERUN_CMDS" value=""/>
+<booleanAttribute key="org.eclipse.debug.core.ATTR_SKIP_DOWNLOAD_TO_TARGET" value="false"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_TARGET_PATH" value="/home/ubuntu/Aerial/IdentifyBalloon_Camera/Release/IdentifyBalloon_Camera"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/IdentifyBalloon_Camera"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.core.REMOTE_TCP" value="ubuntu@tegra-ubuntu"/>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="false"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+</launchConfiguration>

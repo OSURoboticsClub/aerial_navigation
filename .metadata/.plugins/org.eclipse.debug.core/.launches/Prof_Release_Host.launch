@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.cdt.launch.applicationLaunchType">
+<booleanAttribute key="nvvp.apiTraceProfiling" value="true"/>
+<booleanAttribute key="nvvp.appReplay" value="false"/>
+<booleanAttribute key="nvvp.concurrentProfiling" value="true"/>
+<booleanAttribute key="nvvp.environmentProfiling" value="false"/>
+<booleanAttribute key="nvvp.startProfiling" value="true"/>
+<intAttribute key="nvvp.timeout" value="0"/>
+<booleanAttribute key="nvvp.uvmProfiling" value="true"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.DEBUG_NAME" value="${cuda_bin}/cuda-gdb"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=".cuda-gdbinit"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.protocol" value="mi"/>
+<intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.nvidia.cuda.ide.debug.cudagdb"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="/home/scott/Aerial/aerial_navigation/IdentifyBalloon_Camera/Release_Host/IdentifyBalloon_Camera"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="IdentifyBalloon_Camera"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.nvidia.cuda.ide.configuration.release.2085460977.1155206040"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/IdentifyBalloon_Camera"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+</launchConfiguration>
