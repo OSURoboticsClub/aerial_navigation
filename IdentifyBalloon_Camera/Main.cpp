@@ -7,6 +7,9 @@
 #include <cstdio>
 #include <cmath>
 #include <cstdarg>
+#include <ctype.h>
+#include <stdio.h>
+#include <iostream>
 //#include <signal.h>
 //extern "C" void quit_signal_handler(int signum) {
 //	if (quit_signal!=0) exit(0); // just exit already
@@ -15,8 +18,9 @@
 //}
 
 using namespace cv;
+using namespace std;
 
-#define FEED_SIZE 4
+#define FEED_SIZE 3
 #define PER_FRAME_TIME_LOGGING 0
 #define SHOW_FEED_WINDOW 1
 #define SHOW_OTHER_WINDOWS 0
@@ -40,7 +44,7 @@ const int FEED_HEIGHT = 480;
 #if (FEED_SIZE == 3)
 
 const int FEED_WIDTH = 1280;
-const int FEED_HEIGHT = 720;
+const int FEED_HEIGHT = 960;
 
 #endif
 
@@ -219,8 +223,16 @@ int main() {
 	Mat frame_host, thresh_host, debugOverlay;
 	gpu::GpuMat frame, hsv, hue, sat, val, huered, scalehuered, scalesat, balloonyness, thresh;
 
-
-	VideoCapture camera(0);
+	VideoCapture camera;
+	camera.open(0);
+	if( camera.isOpened() ){
+	            cout << ": width=" << camera.get(CV_CAP_PROP_FRAME_WIDTH) <<
+	                ", height=" << camera.get(CV_CAP_PROP_FRAME_HEIGHT) <<
+	                ", nframes=" << camera.get(CV_CAP_PROP_FRAME_COUNT) << endl;
+	} else {
+		cout << "camera not opened" << endl;
+		return(1);
+	}
 	camera.set(CV_CAP_PROP_FRAME_WIDTH, FEED_WIDTH);
 	camera.set(CV_CAP_PROP_FRAME_HEIGHT, FEED_HEIGHT);
 
