@@ -1,6 +1,9 @@
-09:20:34 **** Incremental Build of configuration Release_Host for project IdentifyBalloon_Camera ****
-make all 
+16:12:48 **** Incremental Build of configuration Release for project IdentifyBalloon_Camera ****
+make all -C /home/ubuntu/Aerial/IdentifyBalloon_Camera/Release 
+make: Entering directory `/home/ubuntu/Aerial/IdentifyBalloon_Camera/Release'
 make: Nothing to be done for `all'.
+make: Leaving directory `/home/ubuntu/Aerial/IdentifyBalloon_Camera/Release'
+> Shell Completed (exit code = 0)
 
-09:20:34 Build Finished (took 58ms)
+16:12:48 Build Finished (took 793ms)
 

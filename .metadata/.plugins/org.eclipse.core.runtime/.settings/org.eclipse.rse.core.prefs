@@ -1,3 +1,4 @@
+activeuserprofiles=Team;scott-Ubuntu;scott-ubuntu
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=scott
-useridperkey=scott-Ubuntu.ubuntu@tegra-ubuntu\=ubuntu;scott-Ubuntu.Local\=scott;
+useridperkey=scott-Ubuntu.ubuntu@tegra-ubuntu\=ubuntu;scott-Ubuntu.ubuntu@192.168.0.12\=ubuntu;scott-Ubuntu.Local\=scott;

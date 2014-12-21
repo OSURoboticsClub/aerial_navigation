@@ -1,3 +1,5 @@
+connection.ubuntu@192.168.0.12.com.nvidia.cuda.ide.build.core.Cpu=ARM
+connection.ubuntu@192.168.0.12.default_sync_project_location=/home/ubuntu/Aerial
 connection.ubuntu@tegra-ubuntu.com.nvidia.cuda.ide.build.core.Cpu=ARM
 connection.ubuntu@tegra-ubuntu.default_sync_project_location=/home/ubuntu/Aerial
 connection.ubuntu@tegra-ubuntu.remote.port=2345

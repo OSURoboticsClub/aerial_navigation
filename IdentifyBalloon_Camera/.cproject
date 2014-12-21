@@ -129,9 +129,7 @@
 									<listOptionValue builtIn="false" value="opencv_imgproc"/>
 									<listOptionValue builtIn="false" value="opencv_legacy"/>
 									<listOptionValue builtIn="false" value="opencv_ml"/>
-									<listOptionValue builtIn="false" value="opencv_nonfree"/>
 									<listOptionValue builtIn="false" value="opencv_objdetect"/>
-									<listOptionValue builtIn="false" value="opencv_ocl"/>
 									<listOptionValue builtIn="false" value="opencv_photo"/>
 									<listOptionValue builtIn="false" value="opencv_stitching"/>
 									<listOptionValue builtIn="false" value="opencv_superres"/>
@@ -158,6 +156,7 @@
 					<ptx major="3" minor="0"/>
 					<ptx major="3" minor="2"/>
 				</executable>
+				<editor-arch major="3" minor="0"/>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
@@ -188,7 +187,7 @@
 								<option defaultValue="nvcc.compiler.optimization.level.none" id="nvcc.compiler.optimization.level.1410652314" name="Optimization Level" superClass="nvcc.compiler.optimization.level" valueType="enumerated"/>
 								<option id="nvcc.compiler.pic.1049455214" name="Position Independent Code (-fPIC)" superClass="nvcc.compiler.pic"/>
 								<option id="com.nvidia.cuda.ide.build.option1.830322947" name="Compiler Path (-ccbin)" superClass="com.nvidia.cuda.ide.build.option1" value=" /usr/bin/x86_64-linux-gnu-g++-4.8" valueType="string"/>
-								<option id="nvcc.compiler.include.paths.528053566" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath"/>
+								<option id="nvcc.compiler.include.paths.528053566" name="Include paths (-I)" superClass="nvcc.compiler.include.paths"/>
 								<inputType id="nvcc.compiler.input.cu.2047952748" superClass="nvcc.compiler.input.cu"/>
 								<inputType id="nvcc.compiler.input.cpp.184347530" superClass="nvcc.compiler.input.cpp"/>
 								<inputType id="nvcc.compiler.input.c.1814132218" superClass="nvcc.compiler.input.c"/>
@@ -268,7 +267,7 @@
 								<option defaultValue="nvcc.compiler.optimization.level.most" id="nvcc.compiler.optimization.level.1313405479" name="Optimization Level" superClass="nvcc.compiler.optimization.level" valueType="enumerated"/>
 								<option id="nvcc.compiler.pic.436242387" name="Position Independent Code (-fPIC)" superClass="nvcc.compiler.pic"/>
 								<option id="com.nvidia.cuda.ide.build.option1.2012776178" name="Compiler Path (-ccbin)" superClass="com.nvidia.cuda.ide.build.option1" value=" /usr/bin/x86_64-linux-gnu-g++-4.8" valueType="string"/>
-								<option id="nvcc.compiler.include.paths.80148524" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath"/>
+								<option id="nvcc.compiler.include.paths.80148524" name="Include paths (-I)" superClass="nvcc.compiler.include.paths"/>
 								<inputType id="nvcc.compiler.input.cu.1445498358" superClass="nvcc.compiler.input.cu"/>
 								<inputType id="nvcc.compiler.input.cpp.1288903531" superClass="nvcc.compiler.input.cpp"/>
 								<inputType id="nvcc.compiler.input.c.1833210504" superClass="nvcc.compiler.input.c"/>
