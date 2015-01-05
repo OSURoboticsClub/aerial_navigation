@@ -1,9 +1,8 @@
-16:12:48 **** Incremental Build of configuration Release for project IdentifyBalloon_Camera ****
+16:34:08 **** Incremental Build of configuration Release for project IdentifyBalloon_Camera ****
 make all -C /home/ubuntu/Aerial/IdentifyBalloon_Camera/Release 
 make: Entering directory `/home/ubuntu/Aerial/IdentifyBalloon_Camera/Release'
-make: Nothing to be done for `all'.
-make: Leaving directory `/home/ubuntu/Aerial/IdentifyBalloon_Camera/Release'
-> Shell Completed (exit code = 0)
-
-16:12:48 Build Finished (took 793ms)
-
+Building file: ../Main.cpp
+Invoking: NVCC Compiler
+/usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -odir "" -M -o "Main.d" "../Main.cpp"
+/usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --compile --target-cpu-architecture ARM -m32  -x c++ -o  "Main.o" "../Main.cpp"
+> Shell Completed (exit code = -1)

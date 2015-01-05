@@ -1,6 +1,3 @@
-/* Keep the webcam from locking up when you interrupt a frame capture */
-//volatile int quit_signal=0;
-
 #include "opencv2/opencv.hpp"
 #include "opencv2/gpu/gpu.hpp"
 #include <sys/time.h>
@@ -10,50 +7,17 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <iostream>
-//#include <signal.h>
-//extern "C" void quit_signal_handler(int signum) {
-//	if (quit_signal!=0) exit(0); // just exit already
-//	quit_signal=1;
-//	printf("Will quit at next camera frame (repeat to kill now)\n");
-//}
+#include <dirent.h>
+
 
 using namespace cv;
 using namespace std;
 
-#define FEED_SIZE 4
-#define PER_FRAME_TIME_LOGGING 0
+#define PER_FRAME_TIME_LOGGING 1
 #define SHOW_FEED_WINDOW 1
 #define SHOW_OTHER_WINDOWS 0
 #define SHOW_OUTPUT_WINDOW 1
 #define DRAW_DEBUG_DATA 1
-
-#if (FEED_SIZE == 1)
-
-const int FEED_WIDTH = 320;
-const int FEED_HEIGHT = 240;
-
-#endif
-
-#if (FEED_SIZE == 2)
-
-const int FEED_WIDTH = 640;
-const int FEED_HEIGHT = 480;
-
-#endif
-
-#if (FEED_SIZE == 3)
-
-const int FEED_WIDTH = 1280;
-const int FEED_HEIGHT = 960;
-
-#endif
-
-#if (FEED_SIZE == 4)
-
-const int FEED_WIDTH = 1920;
-const int FEED_HEIGHT = 1080;
-
-#endif
 
 double avgCaptureTime = 0,
 		avgConversionTime = 0,
@@ -103,18 +67,10 @@ void log(const char* msg, ...) {
 #endif
 }
 
-void captureFrame(VideoCapture &camera, Mat &frame_host, gpu::GpuMat &frame, Mat &debugOverlay) {
-	struct timeval timea, timeb;
-
-	gettimeofday(&timea, NULL);
-	camera >> frame_host;
-	//if (quit_signal) exit(0); // exit cleanly on interrupt
+void captureFrame(string file, Mat &frame_host, gpu::GpuMat &frame, Mat &debugOverlay) {
+	frame_host = imread(file, CV_LOAD_IMAGE_COLOR);   // Read the file
 	debugOverlay = frame_host.clone();
 	frame.upload(frame_host);
-	gettimeofday(&timeb, NULL);
-
-	captureTime = getTimeDelta(timea, timeb);
-	log("capture frame time used:\t%ld\n", captureTime);
 }
 
 void convertToHSV(gpu::GpuMat &frame, gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &val) {
@@ -213,9 +169,33 @@ void displayOutput(Mat frame, gpu::GpuMat hue, gpu::GpuMat sat, gpu::GpuMat val,
 	displayTime = getTimeDelta(timea, timeb);
 	log("display frame time used:\t%ld\n", displayTime);
 }
+bool has_suffix(const string& s, const string& suffix)
+{
+	return (s.size() >= suffix.size()) && equal(suffix.rbegin(), suffix.rend(), s.rbegin());
+}
+vector<string> get_images(){
+	vector<string> imgs;
+	string ext = ".jpg";
+	string path = "/home/ubuntu/Aerial/photos";
+	DIR *dir = opendir(path.c_str());
+	dirent *entry;
+	if (!dir) {
+	    perror("opendir");
+	    exit(1);
+	}
+
+	while ( (entry = readdir(dir)) != NULL) {
+	    if(has_suffix(entry->d_name, ext))
+		{
+	    	cout << entry->d_name << endl;
+	    	imgs.push_back(entry->d_name);
+		}
+	}
+	closedir(dir);
+	return(imgs);
+}
 
 int main() {
-	//signal(SIGINT,quit_signal_handler); // listen for ctrl-C
 
 	struct timeval timea, timeb, startTime, endTime;
 	gettimeofday(&startTime, NULL);
@@ -223,18 +203,9 @@ int main() {
 	Mat frame_host, thresh_host, debugOverlay;
 	gpu::GpuMat frame, hsv, hue, sat, val, huered, scalehuered, scalesat, balloonyness, thresh;
 
-	VideoCapture camera;
-	camera.open(0);
-	if( camera.isOpened() ){
-	            cout << ": width=" << camera.get(CV_CAP_PROP_FRAME_WIDTH) <<
-	                ", height=" << camera.get(CV_CAP_PROP_FRAME_HEIGHT) <<
-	                ", nframes=" << camera.get(CV_CAP_PROP_FRAME_COUNT) << endl;
-	} else {
-		cout << "camera not opened" << endl;
-		return(1);
-	}
-	camera.set(CV_CAP_PROP_FRAME_WIDTH, FEED_WIDTH);
-	camera.set(CV_CAP_PROP_FRAME_HEIGHT, FEED_HEIGHT);
+	cout << "pre get images\n";
+	vector<string> images = get_images();
+	cout << "got images\n";
 
 	log("optimized code: %d\n", useOptimized());
 	log("cuda devices: %d\n", gpu::getCudaEnabledDeviceCount());
@@ -243,38 +214,27 @@ int main() {
 	initGUI();
 	log("starting balloon recognition\n");
 
-	while(true) {
-		captureFrame(camera, frame_host, frame, debugOverlay);
+	for(vector<string>::iterator it = images.begin(); it != images.end(); ++it) {
+		string file = *it;
+		cout << "Checking first file " << file << endl;
+		string line_in = "";
+
+		captureFrame(file, frame_host, frame, debugOverlay);
 		convertToHSV(frame, hue, sat, val);
 		processFrame(hue, sat, balloonyness, debugOverlay);
 		displayOutput(frame_host, hue, sat, val, balloonyness, debugOverlay);
 
-		recordTime(captureTime, &avgCaptureTime);
-		recordTime(conversionTime, &avgConversionTime);
-		recordTime(splitTime, &avgSplitTime);
-		recordTime(processingTime, &avgProcessingTime);
-		recordTime(displayTime, &avgDisplayTime);
 
-		++nFrames;
+		while(line_in != "q" || line_in != " "){
+			cout << "Press Space bar for next image\nPress 'q' for quit\n";
+			cin >> line_in;
 
-		if (waitKey(3) >= 0) {
-			break;
 		}
-
+		if (line_in == "q") {
+			break;
+		} else {
+			continue;
+		}
 	}
-
-	gettimeofday(&endTime, NULL);
-	long totalTimeUsec = getTimeDelta(startTime, endTime);
-	double totalTimeSec = double(totalTimeUsec)/1000000.0;
-
-	printf("key press detected. printing statistics.\n");
-	printf("%d frames captured over %ld microseconds (%lf seconds)\n", nFrames,
-			totalTimeUsec, totalTimeSec);
-	printf("ran at %lf Frames per Second\n", nFrames/totalTimeSec);
-	printf("average capture frame time used:\t%lf\n", avgCaptureTime);
-	printf("average color conversion time used:\t%lf\n", avgConversionTime);
-	printf("average split planes time used:  \t%lf\n", avgSplitTime);
-	printf("average ubuframe processing time used:\t%lf\n", avgProcessingTime);
-	printf("average display frame time used:\t%lf\n", avgDisplayTime);
 	printf("terminating...\n");
 }

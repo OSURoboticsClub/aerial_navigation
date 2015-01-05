@@ -46,7 +46,7 @@ all: TestImage_Detect
 TestImage_Detect: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: NVCC Linker'
-	/usr/local/cuda-6.5/bin/nvcc --cudart static -Lusr/local/lib -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --relocatable-device-code=false -gencode arch=compute_30,code=compute_30 -gencode arch=compute_32,code=compute_32 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 -link -o  "TestImage_Detect" $(OBJS) $(USER_OBJS) $(LIBS)
+	/usr/local/cuda-6.5/bin/nvcc --cudart static -Lusr/local/lib -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --relocatable-device-code=false -gencode arch=compute_30,code=compute_30 -gencode arch=compute_32,code=compute_32 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -link -o  "TestImage_Detect" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
