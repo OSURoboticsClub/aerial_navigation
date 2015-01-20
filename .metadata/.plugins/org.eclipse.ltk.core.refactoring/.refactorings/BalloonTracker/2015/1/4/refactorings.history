@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BalloonTracker/motionTracking&apos; to &apos;motionTracking.cpp&apos;" description="Rename resource &apos;motionTracking&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="motionTracking" name="motionTracking.cpp" stamp="1421720055555" updateReferences="true"/>
+</session>

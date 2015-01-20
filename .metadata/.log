@@ -8031,3 +8031,2430 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.core.resources 2 10035 2015-01-05 10:26:43.050
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-08 16:56:29.584 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-08 16:56:30.471
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.resources 4 2 2015-01-08 16:59:07.120
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:07.125
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 2 org.eclipse.ptp.internal.rdt.sync.cdt.core 4 0 2015-01-08 16:59:07.125
+!MESSAGE Error opening connection.
+!STACK 0
+org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:07.126
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 2 org.eclipse.ptp.internal.rdt.sync.cdt.core 4 0 2015-01-08 16:59:07.126
+!MESSAGE Error opening connection.
+!STACK 0
+org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 75 2015-01-08 16:59:07.178
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 75 2015-01-08 16:59:07.178
+!MESSAGE Errors running builder 'CDT Builder' on project 'TestImage_Detect'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 2 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:07.178
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 3 org.eclipse.ptp.internal.rdt.sync.cdt.core 4 0 2015-01-08 16:59:07.178
+!MESSAGE Error opening connection.
+!STACK 0
+org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:07.179
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error opening connection.
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:225)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	... 21 more
+!SUBENTRY 2 org.eclipse.ptp.internal.rdt.sync.cdt.core 4 0 2015-01-08 16:59:07.179
+!MESSAGE Error opening connection.
+!STACK 0
+org.eclipse.ptp.remote.core.exception.RemoteConnectionException: Failed to connect sshd on "192.168.0.12:22"
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:222)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:513)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2015-01-08 16:59:20.963
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:20.964
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:20.964
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:20.965
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:20.965
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:20.965
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:20.965
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 75 2015-01-08 16:59:21.944
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 75 2015-01-08 16:59:21.944
+!MESSAGE Errors running builder 'CDT Builder' on project 'TestImage_Detect'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:21.945
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:21.945
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 4 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:21.945
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:21.945
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:21.945
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:21.945
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2015-01-08 16:59:34.338
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:34.338
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:34.339
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:34.339
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:34.339
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:34.339
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:34.339
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 75 2015-01-08 16:59:35.157
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 75 2015-01-08 16:59:35.157
+!MESSAGE Errors running builder 'CDT Builder' on project 'TestImage_Detect'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:35.157
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:35.157
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 4 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:35.158
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 16:59:35.158
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	... 32 more
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 16:59:35.158
+!MESSAGE org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 36 more
+!SUBENTRY 3 org.eclipse.core.filesystem 4 271 2015-01-08 16:59:35.159
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/.ptp-sync/info/exclude (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:354)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.buildRepo(GitRemoteSyncConnection.java:279)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:167)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:02:18.304
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.sync(GitRemoteSyncConnection.java:909)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:435)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:02:18.305
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:02:18.305
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:02:18.305
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:03:50.857
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:03:50.857
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:04:27.648
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:04:27.649
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:04:35.595
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:04:35.595
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:05:16.341
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:05:16.341
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:06:20.465
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:06:20.465
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.compare 4 1 2015-01-08 17:06:24.055
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:783)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
+	at org.eclipse.compare.ResourceNode.createStream(ResourceNode.java:173)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.createStream(LocalResourceTypedElement.java:215)
+	at org.eclipse.compare.BufferedContent.getContents(BufferedContent.java:52)
+	at org.eclipse.compare.ResourceNode.getContents(ResourceNode.java:64)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.getContents(LocalResourceTypedElement.java:119)
+	at org.eclipse.compare.internal.BinaryCompareViewer.getStream(BinaryCompareViewer.java:137)
+	at org.eclipse.compare.internal.BinaryCompareViewer.setInput(BinaryCompareViewer.java:85)
+	at org.eclipse.compare.CompareViewerSwitchingPane.setInput(CompareViewerSwitchingPane.java:277)
+	at org.eclipse.compare.internal.CompareContentViewerSwitchingPane.setInput(CompareContentViewerSwitchingPane.java:158)
+	at org.eclipse.compare.CompareEditorInput.internalSetContentPaneInput(CompareEditorInput.java:845)
+	at org.eclipse.compare.CompareEditorInput.access$8(CompareEditorInput.java:843)
+	at org.eclipse.compare.CompareEditorInput$11.run(CompareEditorInput.java:779)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.compare.CompareEditorInput.feed1(CompareEditorInput.java:773)
+	at org.eclipse.compare.CompareEditorInput.feedInput(CompareEditorInput.java:751)
+	at org.eclipse.compare.CompareEditorInput.createContents(CompareEditorInput.java:555)
+	at org.eclipse.compare.internal.CompareEditor.createCompareControl(CompareEditor.java:462)
+	at org.eclipse.compare.internal.CompareEditor.access$6(CompareEditor.java:422)
+	at org.eclipse.compare.internal.CompareEditor$3.run(CompareEditor.java:378)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:164)
+	at org.eclipse.ui.internal.UISynchronizer$3.run(UISynchronizer.java:158)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2015-01-08 17:06:24.055
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:22.714
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:22.714
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:22.733
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:22.734
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:36.052
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:36.053
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:52.543
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:52.543
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:55.906
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:55.907
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:07:55.907
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:07:55.907
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.core.resources 4 2 2015-01-08 17:08:19.284
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 17:08:19.284
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:08:19.284
+!MESSAGE Merge conflict
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 17:08:19.285
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:08:19.285
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:08:20.084
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:08:20.084
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.core.resources 4 75 2015-01-08 17:08:20.085
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 75 2015-01-08 17:08:20.085
+!MESSAGE Errors running builder 'CDT Builder' on project 'TestImage_Detect'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Internal error building project TestImage_Detect configuration Release
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:142)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	... 18 more
+!SUBENTRY 2 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 17:08:20.085
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 3 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:08:20.085
+!MESSAGE Merge conflict
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2015-01-08 17:08:20.085
+!MESSAGE Internal error building project TestImage_Detect configuration Release
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.scheduleSyncJobs(SyncManager.java:345)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.sync(SyncManager.java:470)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager.syncBlocking(SyncManager.java:586)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.syncOnPreBuild(SyncCommandLauncher.java:403)
+	at org.eclipse.ptp.internal.rdt.sync.cdt.core.remotemake.SyncCommandLauncher.execute(SyncCommandLauncher.java:252)
+	at com.nvidia.cuda.ide.build.core.CudaBuildCommandLauncher.execute(CudaBuildCommandLauncher.java:84)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:238)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeExternalBuild(ExternalBuildRunner.java:128)
+	at org.eclipse.cdt.managedbuilder.core.ExternalBuildRunner.invokeBuild(ExternalBuildRunner.java:72)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:753)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:432)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:08:20.085
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:09:59.451
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:09:59.451
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:10:52.183
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:10:52.183
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:11:03.039
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:11:03.039
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.compare 4 1 2015-01-08 17:11:06.588
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:783)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
+	at org.eclipse.compare.ResourceNode.createStream(ResourceNode.java:173)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.createStream(LocalResourceTypedElement.java:215)
+	at org.eclipse.compare.BufferedContent.getContents(BufferedContent.java:52)
+	at org.eclipse.compare.ResourceNode.getContents(ResourceNode.java:64)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.getContents(LocalResourceTypedElement.java:119)
+	at org.eclipse.compare.internal.BinaryCompareViewer.getStream(BinaryCompareViewer.java:137)
+	at org.eclipse.compare.internal.BinaryCompareViewer.setInput(BinaryCompareViewer.java:85)
+	at org.eclipse.compare.CompareViewerSwitchingPane.setInput(CompareViewerSwitchingPane.java:277)
+	at org.eclipse.compare.internal.CompareContentViewerSwitchingPane.setInput(CompareContentViewerSwitchingPane.java:158)
+	at org.eclipse.compare.CompareEditorInput.internalSetContentPaneInput(CompareEditorInput.java:845)
+	at org.eclipse.compare.CompareEditorInput.access$8(CompareEditorInput.java:843)
+	at org.eclipse.compare.CompareEditorInput$11.run(CompareEditorInput.java:779)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.compare.CompareEditorInput.feed1(CompareEditorInput.java:773)
+	at org.eclipse.compare.CompareEditorInput.feedInput(CompareEditorInput.java:751)
+	at org.eclipse.compare.CompareEditorInput.createContents(CompareEditorInput.java:555)
+	at org.eclipse.compare.internal.CompareEditor.createCompareControl(CompareEditor.java:462)
+	at org.eclipse.compare.internal.CompareEditor.access$6(CompareEditor.java:422)
+	at org.eclipse.compare.internal.CompareEditor$3.run(CompareEditor.java:378)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:164)
+	at org.eclipse.ui.internal.UISynchronizer$3.run(UISynchronizer.java:158)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2015-01-08 17:11:06.588
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+
+!ENTRY org.eclipse.compare 4 1 2015-01-08 17:11:10.761
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:783)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
+	at org.eclipse.compare.ResourceNode.createStream(ResourceNode.java:173)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.createStream(LocalResourceTypedElement.java:215)
+	at org.eclipse.compare.BufferedContent.getContents(BufferedContent.java:52)
+	at org.eclipse.compare.ResourceNode.getContents(ResourceNode.java:64)
+	at org.eclipse.team.internal.ui.synchronize.LocalResourceTypedElement.getContents(LocalResourceTypedElement.java:119)
+	at org.eclipse.compare.internal.BinaryCompareViewer.getStream(BinaryCompareViewer.java:137)
+	at org.eclipse.compare.internal.BinaryCompareViewer.setInput(BinaryCompareViewer.java:85)
+	at org.eclipse.compare.CompareViewerSwitchingPane.setInput(CompareViewerSwitchingPane.java:277)
+	at org.eclipse.compare.internal.CompareContentViewerSwitchingPane.setInput(CompareContentViewerSwitchingPane.java:158)
+	at org.eclipse.compare.internal.CompareContentViewerSwitchingPane$7.widgetSelected(CompareContentViewerSwitchingPane.java:235)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:248)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2015-01-08 17:11:10.761
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:11:47.233
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:11:47.233
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.core.filesystem 4 272 2015-01-08 17:11:54.669
+!MESSAGE Could not move: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.core.filesystem.provider.FileStore.move(FileStore.java:410)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.move(LocalFile.java:358)
+	at org.eclipse.core.internal.localstore.BlobStore.addBlob(BlobStore.java:54)
+	at org.eclipse.core.internal.localstore.HistoryStore2.addState(HistoryStore2.java:92)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.recursiveKeepHistory(DeleteVisitor.java:118)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.recursiveKeepHistory(DeleteVisitor.java:113)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.delete(DeleteVisitor.java:57)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.visit(DeleteVisitor.java:150)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:109)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:349)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1977)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:168)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 28 more
+!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2015-01-08 17:11:54.670
+!MESSAGE File not found: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata.
+!STACK 0
+java.io.FileNotFoundException: /home/scott/Aerial/aerial_navigation/TestImage_Detect/Release/nsightbuilddata (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.filesystem.provider.FileStore.copyFile(FileStore.java:220)
+	at org.eclipse.core.filesystem.provider.FileStore.copy(FileStore.java:143)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.copy(LocalFile.java:117)
+	at org.eclipse.core.filesystem.provider.FileStore.move(FileStore.java:410)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.move(LocalFile.java:358)
+	at org.eclipse.core.internal.localstore.BlobStore.addBlob(BlobStore.java:54)
+	at org.eclipse.core.internal.localstore.HistoryStore2.addState(HistoryStore2.java:92)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.recursiveKeepHistory(DeleteVisitor.java:118)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.recursiveKeepHistory(DeleteVisitor.java:113)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.delete(DeleteVisitor.java:57)
+	at org.eclipse.core.internal.localstore.DeleteVisitor.visit(DeleteVisitor.java:150)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:109)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:349)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1977)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:168)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:11:54.674
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:11:54.675
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:12:02.653
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:12:02.653
+!MESSAGE Merge conflict
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-01-08 17:12:14.185
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncMergeConflictException: Merge conflict
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:400)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-01-08 17:12:14.185
+!MESSAGE Merge conflict
+!SESSION 2015-01-08 17:55:19.098 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-08 17:55:19.993
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-08 18:11:37.657 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-08 18:11:38.609
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-09 14:47:04.057 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-09 14:47:05.067
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-13 20:27:28.315 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-13 20:27:29.337
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-19 17:45:46.129 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-19 17:45:47.832
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-01-19 17:46:41.542 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-01-19 17:47:32.277
+!MESSAGE Indexed 'BalloonTracker' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-01-19 17:49:51.055
+!MESSAGE Indexed 'BalloonTracker' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2015-01-19 18:35:28.954 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-01-19 18:35:29.879
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-01-19 19:17:47.430
+!MESSAGE Indexed 'TrackingFilterTuner' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-01-19 19:21:04.548
+!MESSAGE Indexed 'TrackingFilterTuner' (2 sources, 222 headers) in 47.17 sec: 46,650 declarations; 76,356 references; 1 unresolved inclusions; 21 syntax errors; 437 unresolved names (0.35%)
+
+!ENTRY org.eclipse.rse.ui 4 0 2015-01-19 21:55:59.463
+!MESSAGE RSEG1058
+!STACK 0
+java.lang.Exception
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.logMessage(SystemMessageDialog.java:449)
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.open(SystemMessageDialog.java:459)
+	at org.eclipse.rse.internal.connectorservice.ssh.SshConnectorService$SessionLostHandler.run(SshConnectorService.java:332)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)

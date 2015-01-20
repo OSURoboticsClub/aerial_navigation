@@ -1,16 +1,10 @@
-17:46:43 **** Incremental Build of configuration Release for project TestImage_Detect ****
-make all -C /home/ubuntu/Aerial/TestImage_Detect/Release 
-make: Entering directory `/home/ubuntu/Aerial/TestImage_Detect/Release'
-Building file: ../Main.cpp
-Invoking: NVCC Compiler
-/usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -odir "" -M -o "Main.d" "../Main.cpp"
-/usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --compile --target-cpu-architecture ARM -m32  -x c++ -o  "Main.o" "../Main.cpp"
-Finished building: ../Main.cpp
- 
-Building target: TestImage_Detect
+21:56:21 **** Incremental Build of configuration Release for project BalloonTracker ****
+make all -C /home/ubuntu/Aerial/BalloonTracker/Release 
+make: Entering directory `/home/ubuntu/Aerial/BalloonTracker/Release'
+Building target: BalloonTracker
 Invoking: NVCC Linker
-/usr/local/cuda-6.5/bin/nvcc --cudart static -Lusr/local/lib -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --relocatable-device-code=false -gencode arch=compute_30,code=compute_30 -gencode arch=compute_32,code=compute_32 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -link -o  "TestImage_Detect"  ./Main.o   -lopencv_calib3d -lopencv_contrib -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_highgui -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_superres -lopencv_video -lopencv_videostab
-Finished building target: TestImage_Detect
+/usr/local/cuda-6.5/bin/nvcc --cudart static -Lusr/local/lib -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --relocatable-device-code=false -gencode arch=compute_30,code=compute_30 -gencode arch=compute_32,code=compute_32 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -link -o  "BalloonTracker"  ./motionTracking.o   -lopencv_calib3d -lopencv_contrib -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_highgui -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_superres -lopencv_video -lopencv_videostab
+Finished building target: BalloonTracker
  
-make: Leaving directory `/home/ubuntu/Aerial/TestImage_Detect/Release'
+make: Leaving directory `/home/ubuntu/Aerial/BalloonTracker/Release'
 > Shell Completed (exit code = 0)

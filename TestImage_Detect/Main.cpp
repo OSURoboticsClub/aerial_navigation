@@ -34,7 +34,8 @@ long captureTime = 0,
 int nFrames = 0;
 
 const double areaRatio = 0.65;
-
+const string file_in_path = "/home/ubuntu/Aerial/photos";
+const string file_out_path = "/home/ubuntu/Aerial/outPhotos";
 void initGUI() {
 #if (SHOW_FEED_WINDOW == 1)
 	namedWindow("feed");
@@ -68,7 +69,14 @@ void log(const char* msg, ...) {
 }
 
 void captureFrame(string file, Mat &frame_host, gpu::GpuMat &frame, Mat &debugOverlay) {
-	frame_host = imread(file, CV_LOAD_IMAGE_COLOR);   // Read the file
+	string filepath = file_in_path + "/" + file;
+	frame_host = imread(filepath, CV_LOAD_IMAGE_COLOR);   // Read the file
+	if(! frame_host.data )                              // Check for invalid input
+	{
+		cout <<  "Could not open or find the image" << endl << file << endl;
+		return;
+	}
+
 	debugOverlay = frame_host.clone();
 	frame.upload(frame_host);
 }
@@ -76,14 +84,15 @@ void captureFrame(string file, Mat &frame_host, gpu::GpuMat &frame, Mat &debugOv
 void convertToHSV(gpu::GpuMat &frame, gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &val) {
 	struct timeval timea, timeb;
 	gpu::GpuMat hsv;
-
 	vector<gpu::GpuMat> hsvplanes(3);
 	hsvplanes[0] = hue;
 	hsvplanes[1] = sat;
 	hsvplanes[2] = val;
 
 	gettimeofday(&timea, NULL);
+	cout << "pre convert" << endl;
 	gpu::cvtColor(frame, hsv, CV_BGR2HSV);
+	cout << "converted" << endl;
 	gettimeofday(&timeb, NULL);
 
 	conversionTime = getTimeDelta(timea, timeb);
@@ -176,8 +185,7 @@ bool has_suffix(const string& s, const string& suffix)
 vector<string> get_images(){
 	vector<string> imgs;
 	string ext = ".jpg";
-	string path = "/home/ubuntu/Aerial/photos";
-	DIR *dir = opendir(path.c_str());
+	DIR *dir = opendir(file_in_path.c_str());
 	dirent *entry;
 	if (!dir) {
 	    perror("opendir");
@@ -188,13 +196,22 @@ vector<string> get_images(){
 	    if(has_suffix(entry->d_name, ext))
 		{
 	    	cout << entry->d_name << endl;
-	    	imgs.push_back(entry->d_name);
+	    	string filepath = entry->d_name;
+	    	imgs.push_back(filepath);
 		}
 	}
 	closedir(dir);
 	return(imgs);
 }
+bool write_image(Mat frame, string file){
 
+	vector<int> compression_params;
+	compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
+	compression_params.push_back(100);
+	string filepath = file_out_path + "/" + file;
+	imwrite(filepath, frame, compression_params);
+	return true;
+}
 int main() {
 
 	struct timeval timea, timeb, startTime, endTime;
@@ -203,9 +220,7 @@ int main() {
 	Mat frame_host, thresh_host, debugOverlay;
 	gpu::GpuMat frame, hsv, hue, sat, val, huered, scalehuered, scalesat, balloonyness, thresh;
 
-	cout << "pre get images\n";
 	vector<string> images = get_images();
-	cout << "got images\n";
 
 	log("optimized code: %d\n", useOptimized());
 	log("cuda devices: %d\n", gpu::getCudaEnabledDeviceCount());
@@ -223,18 +238,8 @@ int main() {
 		convertToHSV(frame, hue, sat, val);
 		processFrame(hue, sat, balloonyness, debugOverlay);
 		displayOutput(frame_host, hue, sat, val, balloonyness, debugOverlay);
-
-
-		while(line_in != "q" || line_in != " "){
-			cout << "Press Space bar for next image\nPress 'q' for quit\n";
-			cin >> line_in;
-
-		}
-		if (line_in == "q") {
-			break;
-		} else {
-			continue;
-		}
+		write_image(debugOverlay, file);
+		waitKey(0);
 	}
 	printf("terminating...\n");
 }

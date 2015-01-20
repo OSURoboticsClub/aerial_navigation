@@ -181,6 +181,7 @@
 		<configuration configurationName="Release">
 			<resource resourceType="PROJECT" workspacePath="/TestImage_Detect"/>
 		</configuration>
+		<configuration configurationName="Release_Host"/>
 		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/TestImage_Detect"/>
 		</configuration>

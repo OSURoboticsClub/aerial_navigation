@@ -1,0 +1,248 @@
+#include "opencv2/opencv.hpp"
+#include "opencv2/gpu/gpu.hpp"
+#include <sys/time.h>
+#include <cstdio>
+#include <cmath>
+#include <cstdarg>
+#include <ctype.h>
+#include <stdio.h>
+#include <iostream>
+#include <dirent.h>
+
+
+using namespace cv;
+using namespace std;
+
+#define PER_FRAME_TIME_LOGGING 1
+#define SHOW_FEED_WINDOW 1
+#define SHOW_OTHER_WINDOWS 0
+#define SHOW_OUTPUT_WINDOW 1
+#define DRAW_DEBUG_DATA 1
+
+double avgCaptureTime = 0,
+		avgConversionTime = 0,
+		avgSplitTime = 0,
+		avgProcessingTime = 0,
+		avgDisplayTime = 0;
+
+long captureTime = 0,
+		conversionTime = 0,
+		splitTime = 0,
+		processingTime = 0,
+		displayTime = 0;
+
+int nFrames = 0;
+
+const double areaRatio = 0.65;
+
+void initGUI() {
+#if (SHOW_FEED_WINDOW == 1)
+	namedWindow("feed");
+#endif
+#if (SHOW_OTHER_WINDOWS == 1)
+	namedWindow("hue");
+	namedWindow("sat");
+	namedWindow("val");
+	namedWindow("balloonyness");
+#endif
+#if (SHOW_OUTPUT_WINDOW == 1)
+	namedWindow("debugOverlay");
+#endif
+}
+
+void recordTime(long delta, double *avgTime) {
+	*avgTime = (*avgTime * nFrames + delta) / (nFrames + 1);
+}
+
+long getTimeDelta(struct timeval timea, struct timeval timeb) {
+	return 1000000 * (timeb.tv_sec - timea.tv_sec) +
+			(int(timeb.tv_usec) - int(timea.tv_usec));
+}
+
+void log(const char* msg, ...) {
+#if (PER_FRAME_TIME_LOGGING == 1)
+	va_list args;
+	va_start(args, msg);
+	printf(msg, args);
+#endif
+}
+
+void captureFrame(string file, Mat &frame_host, gpu::GpuMat &frame, Mat &debugOverlay) {
+	frame_host = imread(file, CV_LOAD_IMAGE_COLOR);   // Read the file
+	if(! frame_host.data )                              // Check for invalid input
+	{
+		cout <<  "Could not open or find the image" << endl << file << endl;
+		return;
+	}
+
+	debugOverlay = frame_host.clone();
+	frame.upload(frame_host);
+}
+
+void convertToHSV(gpu::GpuMat &frame, gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &val) {
+	struct timeval timea, timeb;
+	gpu::GpuMat hsv;
+	vector<gpu::GpuMat> hsvplanes(3);
+	hsvplanes[0] = hue;
+	hsvplanes[1] = sat;
+	hsvplanes[2] = val;
+
+	gettimeofday(&timea, NULL);
+	cout << "pre convert" << endl;
+	gpu::cvtColor(frame, hsv, CV_BGR2HSV);
+	cout << "converted" << endl;
+	gettimeofday(&timeb, NULL);
+
+	conversionTime = getTimeDelta(timea, timeb);
+	log("color conversion time used:\t%ld\n", conversionTime);
+
+	gettimeofday(&timea, NULL);
+	gpu::split(hsv, hsvplanes);
+	hue = hsvplanes[0];
+	sat = hsvplanes[1];
+	val = hsvplanes[2];
+	gettimeofday(&timeb, NULL);
+
+	splitTime = getTimeDelta(timea, timeb);
+	log("split planes time used:   \t%ld\n", splitTime);
+}
+
+void processFrame(gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &balloonyness, Mat &debugOverlay) {
+	struct timeval timea, timeb;
+	gpu::GpuMat huered, scalehuered, scalesat, thresh;
+	Mat thresh_host;
+	vector< vector< Point > > contours;
+
+	gettimeofday(&timea, NULL);
+
+	gpu::absdiff(hue, Scalar(90), huered);
+	gpu::divide(huered, Scalar(4), scalehuered);
+	gpu::divide(sat, Scalar(16), scalesat);
+	gpu::multiply(scalehuered, scalesat, balloonyness);
+	gpu::threshold(balloonyness, thresh, 200, 255, THRESH_BINARY);
+	thresh.download(thresh_host);
+
+	findContours(thresh_host, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+
+#if (DRAW_DEBUG_DATA == 1)
+	drawContours(debugOverlay, contours, -1, Scalar(255, 0, 0));
+#endif
+
+	vector< Point2f > circleCenters(contours.size());
+	vector< float > circleRadii(contours.size());
+	Point2f center;
+	float radius;
+	for (int n = 0; n < contours.size(); ++n) {
+		minEnclosingCircle(contours[n], center, radius);
+
+#if (DRAW_DEBUG_DATA == 1)
+		circle(debugOverlay, center, radius, Scalar(0, 255, 255));
+#endif
+
+		if (contourArea(contours[n]) >= areaRatio * radius*radius*3.1415926) {
+			circle(debugOverlay, center, radius, Scalar(0, 255, 0), 2);
+		}
+	}
+
+	gettimeofday(&timeb, NULL);
+	processingTime = getTimeDelta(timea, timeb);
+	log("frame processing time used:\t%ld\n", processingTime);
+}
+
+void displayOutput(Mat frame, gpu::GpuMat hue, gpu::GpuMat sat, gpu::GpuMat val, gpu::GpuMat balloonyness, Mat debugOverlay) {
+	struct timeval timea, timeb;
+
+	gettimeofday(&timea, NULL);
+
+#if (SHOW_FEED_WINDOW == 1)
+	imshow("feed", frame);
+#endif
+#if (SHOW_OTHER_WINDOWS ==1)
+	Mat hue_host, sat_host, val_host, balloonyness_host;
+	hue.download(hue_host);
+	sat.download(sat_host);
+	val.download(val_host);
+	balloonyness.download(balloonyness_host);
+	imshow("hue", hue_host);
+	imshow("sat", sat_host);
+	imshow("val", val_host);
+	imshow("balloonyness", balloonyness_host);
+#endif
+#if (SHOW_OUTPUT_WINDOW == 1)
+	imshow("debugOverlay", debugOverlay);
+#endif
+
+	gettimeofday(&timeb, NULL);
+	displayTime = getTimeDelta(timea, timeb);
+	log("display frame time used:\t%ld\n", displayTime);
+}
+bool has_suffix(const string& s, const string& suffix)
+{
+	return (s.size() >= suffix.size()) && equal(suffix.rbegin(), suffix.rend(), s.rbegin());
+}
+vector<string> get_images(){
+	vector<string> imgs;
+	string ext = ".jpg";
+	string path = "/home/ubuntu/Aerial/photos";
+	DIR *dir = opendir(path.c_str());
+	dirent *entry;
+	if (!dir) {
+	    perror("opendir");
+	    exit(1);
+	}
+
+	while ( (entry = readdir(dir)) != NULL) {
+	    if(has_suffix(entry->d_name, ext))
+		{
+	    	cout << entry->d_name << endl;
+	    	string filepath = path + "/" + entry->d_name;
+	    	imgs.push_back(filepath);
+		}
+	}
+	closedir(dir);
+	return(imgs);
+}
+
+int main() {
+
+	struct timeval timea, timeb, startTime, endTime;
+	gettimeofday(&startTime, NULL);
+
+	Mat frame_host, thresh_host, debugOverlay;
+	gpu::GpuMat frame, hsv, hue, sat, val, huered, scalehuered, scalesat, balloonyness, thresh;
+
+	cout << "pre get images\n";
+	vector<string> images = get_images();
+	cout << "got images\n";
+
+	log("optimized code: %d\n", useOptimized());
+	log("cuda devices: %d\n", gpu::getCudaEnabledDeviceCount());
+	log("current device: %d\n", gpu::getDevice());
+
+	initGUI();
+	log("starting balloon recognition\n");
+
+	for(vector<string>::iterator it = images.begin(); it != images.end(); ++it) {
+		string file = *it;
+		cout << "Checking first file " << file << endl;
+		string line_in = "";
+
+		captureFrame(file, frame_host, frame, debugOverlay);
+		convertToHSV(frame, hue, sat, val);
+		processFrame(hue, sat, balloonyness, debugOverlay);
+		displayOutput(frame_host, hue, sat, val, balloonyness, debugOverlay);
+		waitKey(0);
+
+		while(line_in != "q" || line_in != "n"){
+			cout << "Press n for next image\nPress 'q' for quit\n";
+			cin >> line_in;
+
+		}
+		if (line_in == "q") {
+			break;
+		} else {
+			continue;
+		}
+	}
+	printf("terminating...\n");
+}

@@ -1,4 +1,4 @@
-17:46:43 **** Incremental Build of configuration Release for project TestImage_Detect ****
+14:49:20 **** Incremental Build of configuration Release for project TestImage_Detect ****
 make all -C /home/ubuntu/Aerial/TestImage_Detect/Release 
 make: Entering directory `/home/ubuntu/Aerial/TestImage_Detect/Release'
 Building file: ../Main.cpp
@@ -15,5 +15,5 @@ Finished building target: TestImage_Detect
 make: Leaving directory `/home/ubuntu/Aerial/TestImage_Detect/Release'
 > Shell Completed (exit code = 0)
 
-17:46:48 Build Finished (took 5s.112ms)
+14:49:30 Build Finished (took 10s.315ms)
 
