@@ -101,7 +101,7 @@ void searchForMovement(Mat thresholdImage, Mat &cameraFeed) {
 					+ ")", Point(x, y), 1, 1, Scalar(255, 0, 0), 2);
 
 }
-int main() {
+/*int main() {
 
 	//some boolean variables for added functionality
 	bool objectDetected = false;
@@ -149,15 +149,24 @@ int main() {
 		vector<Mat> hsvplanes2(3);
 		vector<Mat> diffplanes(3);
 		cv::split(grayImage1, hsvplanes1);
-		cv::absdiff(hsvplanes1[0], Scalar(90), hsvplanes1[0]);
 		cv::split(grayImage2, hsvplanes2);
-		cv::absdiff(hsvplanes2[0], Scalar(90), hsvplanes2[0]);
+		//cv::absdiff(hsvplanes1[0], Scalar(90), hsvplanes1[0]);
+		//cv::absdiff(hsvplanes2[0], Scalar(90), hsvplanes2[0]);
+		//cv::merge(hsvplanes1, grayImage1);
+		//cv::merge(hsvplanes2, grayImage2);
 
-		cv::merge(hsvplanes1, grayImage1);
-		cv::merge(hsvplanes2, grayImage2);
+		absdiff(hsvplanes1[0], Scalar(90), hsvplanes1[0]);
+		divide(hsvplanes1[0], Scalar(4), hsvplanes1[0]);
+		divide(hsvplanes1[1], Scalar(16), hsvplanes1[1]);
+		multiply(hsvplanes1[0], hsvplanes1[1], grayImage1);
 
-		inRange(grayImage1,Scalar(HUE_MIN,SAT_MIN,VAL_MIN),Scalar(HUE_MAX,SAT_MAX,VAL_MAX),grayImage1);
-		inRange(grayImage2,Scalar(HUE_MIN,SAT_MIN,VAL_MIN),Scalar(HUE_MAX,SAT_MAX,VAL_MAX),grayImage2);
+		absdiff(hsvplanes2[0], Scalar(90), hsvplanes2[0]);
+		divide(hsvplanes2[0], Scalar(4), hsvplanes2[0]);
+		divide(hsvplanes2[1], Scalar(16), hsvplanes2[1]);
+		multiply(hsvplanes2[0], hsvplanes2[1], grayImage2);
+
+		//inRange(grayImage1,Scalar(HUE_MIN,SAT_MIN,VAL_MIN),Scalar(HUE_MAX,SAT_MAX,VAL_MAX),grayImage1);
+		//inRange(grayImage2,Scalar(HUE_MIN,SAT_MIN,VAL_MIN),Scalar(HUE_MAX,SAT_MAX,VAL_MAX),grayImage2);
 		cv::absdiff(grayImage1, grayImage2, differenceImage);
 		//threshold intensity image at a given sensitivity value
 		cv::threshold(differenceImage, thresholdImage, SENSITIVITY_VALUE, 255,
@@ -242,3 +251,4 @@ int main() {
 	return 0;
 
 }
+*/

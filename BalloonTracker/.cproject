@@ -184,5 +184,6 @@
 		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/BalloonTracker"/>
 		</configuration>
+		<configuration configurationName="Release Host"/>
 	</storageModule>
 </cproject>

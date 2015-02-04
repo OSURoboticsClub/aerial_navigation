@@ -1,4 +1,4 @@
-20:35:40 **** Incremental Build of configuration Release for project TrackingFilterTuner ****
+17:53:22 **** Incremental Build of configuration Release for project TrackingFilterTuner ****
 make all -C /home/ubuntu/Aerial/TrackingFilterTuner/Release 
 make: Entering directory `/home/ubuntu/Aerial/TrackingFilterTuner/Release'
 Building file: ../objectTrackingTut.cpp
@@ -6,22 +6,22 @@ Invoking: NVCC Compiler
 /usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 --target-cpu-architecture ARM -m32 -odir "" -M -o "objectTrackingTut.d" "../objectTrackingTut.cpp"
 /usr/local/cuda-6.5/bin/nvcc -O3 -ccbin /usr/bin/arm-linux-gnueabihf-g++-4.8 --compile --target-cpu-architecture ARM -m32  -x c++ -o  "objectTrackingTut.o" "../objectTrackingTut.cpp"
 ../objectTrackingTut.cpp: In function ‘void createTrackbars()’:
-../objectTrackingTut.cpp:70:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:71:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "H_MIN", H_MIN);
                                        ^
-../objectTrackingTut.cpp:71:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:72:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "H_MAX", H_MAX);
                                        ^
-../objectTrackingTut.cpp:72:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:73:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "S_MIN", S_MIN);
                                        ^
-../objectTrackingTut.cpp:73:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:74:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "S_MAX", S_MAX);
                                        ^
-../objectTrackingTut.cpp:74:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:75:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "V_MIN", V_MIN);
                                        ^
-../objectTrackingTut.cpp:75:39: warning: too many arguments for format [-Wformat-extra-args]
+../objectTrackingTut.cpp:76:39: warning: too many arguments for format [-Wformat-extra-args]
   sprintf( TrackbarName, "V_MAX", V_MAX);
                                        ^
 Finished building: ../objectTrackingTut.cpp
@@ -34,5 +34,5 @@ Finished building target: TrackingFilterTuner
 make: Leaving directory `/home/ubuntu/Aerial/TrackingFilterTuner/Release'
 > Shell Completed (exit code = 0)
 
-20:35:44 Build Finished (took 4s.396ms)
+17:53:27 Build Finished (took 4s.802ms)
 

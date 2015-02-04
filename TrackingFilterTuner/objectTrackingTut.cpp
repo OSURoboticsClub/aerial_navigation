@@ -25,11 +25,12 @@ using namespace cv;
 //initial min and max HSV filter values.
 //these will be changed using trackbars
 int H_MIN = 0;
-int H_MAX = 256;
+int H_MAX = 255;
 int S_MIN = 0;
-int S_MAX = 256;
+int S_MAX = 255;
 int V_MIN = 0;
-int V_MAX = 256;
+int V_MAX = 255;
+
 //default capture width and height
 const int FRAME_WIDTH = 640;
 const int FRAME_HEIGHT = 480;
@@ -185,6 +186,7 @@ int main(int argc, char* argv[])
 	Mat cameraFeed;
 	//matrix storage for HSV image
 	Mat HSV;
+	vector<Mat> hsvplanes1(3);
 	//matrix storage for binary threshold image
 	Mat threshold;
 	//x and y values for the location of the object
@@ -204,28 +206,47 @@ int main(int argc, char* argv[])
 		//store image to matrix
 		capture.read(cameraFeed);
 		//convert frame from BGR to HSV colorspace
-		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-		//filter HSV image between values and store filtered image to
-		//threshold matrix
-		vector<Mat> hsvplanes(3);
-		cv::split(HSV, hsvplanes);
-		cv::absdiff(hsvplanes[0], Scalar(90), hsvplanes[0]);
-		cv::merge(hsvplanes, HSV);
-		inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
-		//perform morphological operations on thresholded image to eliminate noise
-		//and emphasize the filtered object(s)
-		if(useMorphOps)
-		morphOps(threshold);
-		//pass in thresholded frame to our object tracking function
-		//this function will return the x and y coordinates of the
-		//filtered object
-		if(trackObjects)
-			trackFilteredObject(x,y,threshold,cameraFeed);
 
-		//show frames
-		imshow(windowName2,threshold);
+		GaussianBlur( cameraFeed, cameraFeed, Size(3,3), 0, 0, BORDER_DEFAULT );
+		cvtColor( cameraFeed, cameraFeed, CV_RGB2HSV );
+		split(cameraFeed, hsvplanes1);
+		//absdiff(hsvplanes1[0], Scalar(90), hsvplanes1[0]);
+		cv::inRange(hsvplanes1[0], Scalar(H_MIN), Scalar(H_MAX), hsvplanes1[0]);
+		cv::inRange(hsvplanes1[1], Scalar(S_MIN), Scalar(S_MAX), hsvplanes1[1]);
+		cv::inRange(hsvplanes1[2], Scalar(V_MIN), Scalar(V_MAX), hsvplanes1[2]);
+
+		merge(hsvplanes1, HSV);
+		//cv::threshold(HSV, threshold, V_MIN, 255, THRESH_TOZERO);
+//
+		/// Apply Laplace function
+//		Laplacian( HSV, threshold, CV_16S, 3, 1, 0, BORDER_DEFAULT );
+//		convertScaleAbs( threshold, threshold );
+
+//		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+//		//filter HSV image between values and store filtered image to
+//		//threshold matrix
+//		vector<Mat> hsvplanes(3);
+//		cv::split(HSV, hsvplanes);
+//		cv::absdiff(hsvplanes[0], Scalar(90), hsvplanes[0]);
+//		cv::merge(hsvplanes, HSV);
+//		inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
+//		//perform morphological operations on thresholded image to eliminate noise
+//		//and emphasize the filtered object(s)
+//		if(useMorphOps)
+//		morphOps(threshold);
+//		//pass in thresholded frame to our object tracking function
+//		//this function will return the x and y coordinates of the
+//		//filtered object
+//		if(trackObjects)
+//			trackFilteredObject(x,y,threshold,cameraFeed);
+//
+//		//show frames
+		//imshow(windowName2,threshold);
 		imshow(windowName,cameraFeed);
 		imshow(windowName1,HSV);
+		imshow("HUE",hsvplanes1[0]);
+		imshow("SAT",hsvplanes1[1]);
+		imshow("VAL",hsvplanes1[2]);
 
 
 		//delay 30ms so that screen can refresh.
