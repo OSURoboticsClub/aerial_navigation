@@ -16,7 +16,7 @@ using namespace cv::gpu;
 #define RES_720
 #define ENABLE_HSV  //enable/disable for viewing
 #define ENABLE_HSV_GUI
-//#define ENABLE_RGB_SPLIT
+#define ENABLE_RGB_SPLIT
 
 //global variables
 Mat frame;
@@ -24,6 +24,7 @@ Mat hsvFrame;
 int hue_min = 0, sat_min = 0, val_min = 0;
 int hue_max = 180, sat_max = 255, val_max = 255;
 SimpleBlobDetector::Params params;
+std::string trackbar_window = "hsv trackbars";
 //capture = cvCaptureFromCAM( CV_CAP_ANY ); //0=default, -1=any camera, 1..99=your camera
 
 
@@ -43,11 +44,7 @@ void initVideo(VideoCapture &capture)
 	namedWindow("raw");
 #ifdef ENABLE_HSV
 	namedWindow("hsv");
-	capture.read(frame);
-	moveWindow("hsv", 640, 0);
-	imshow("hsv", frame);
-	moveWindow("hsv", 640, 0);
-	//namedWindow("val");
+	namedWindow(trackbar_window);
 #endif
 #ifdef ENABLE_RGB_SPLIT
 	namedWindow("Using RGB Channel Split");
@@ -72,50 +69,18 @@ void cameraSetup(VideoCapture &capture)
 
 void hsvOnChange(int val, void *data)
 {
-	cout << val << endl;
-	int &key = *(static_cast<int*>(data));
-	switch(key) {
-	case 0:
-		hue_min = val;
-		break;
-	case 1:
-		sat_min = val;
-		break;
-	case 2:
-		val_min = val;
-		break;
-	case 3:
-		hue_max = val;
-		break;
-	case 4:
-		sat_max = val;
-		break;
-	case 5:
-		val_max = val;
-		break;
-	default:
-		cout << "value not captured" << endl;	   
-	}
 
 }
 
 void hsv_gui_init()
 {
 	int key = 0;
-	int tmp = 0;
-	createTrackbar("min hue", "hsv", 0, 180, hsvOnChange, static_cast<void*>(&key));
-	key = 1;
-	createTrackbar("min sat", "hsv", 0, 255, hsvOnChange, static_cast<void*>(&key));
-	key = 2;
-	createTrackbar("min val", "hsv", 0, 255, hsvOnChange, static_cast<void*>(&key));
-	key = 3;
-	tmp = 180;
-	createTrackbar("max hue", "hsv", &tmp, 180, hsvOnChange, static_cast<void*>(&key));
-	key = 4;
-	tmp = 255;
-	createTrackbar("max sat", "hsv", &tmp, 255, hsvOnChange, static_cast<void*>(&key));
-	key = 5;
-	createTrackbar("max val", "hsv", &tmp, 255, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("min hue", trackbar_window, &hue_min, 180, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("max hue", trackbar_window, &hue_max, 180, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("min sat", trackbar_window, &sat_min, 255, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("max sat", trackbar_window, &sat_max, 255, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("min val", trackbar_window, &val_min, 255, hsvOnChange, static_cast<void*>(&key));
+	createTrackbar("max val", trackbar_window, &val_max, 255, hsvOnChange, static_cast<void*>(&key));
 }
 
 #ifdef ENABLE_RGB_SPLIT
