@@ -67,6 +67,18 @@ void cameraSetup(VideoCapture &capture)
 	cout << "Height: " << capture.get(CV_CAP_PROP_FRAME_HEIGHT) << endl;
 }
 
+void getFiles(std::string filename, VideoCapture dest)
+{
+	if (dest.open(filename) == false) {
+		cerr << "Cannot open image file " << filename << endl;
+		dest.release();
+		return;
+	}
+	if (dest.isOpened()){
+		cout << "Successfully opened " << filename << endl;
+	}
+}
+
 void hsvOnChange(int val, void *data)
 {
 
@@ -135,20 +147,6 @@ void renderHSV(Mat frame)
 	//convertedHue.download(hsvFrame);
 	hsvFrame = redHueFrame;
 }
-
-
-// std::tuple findBlob(Mat frame)
-// {
-//     blob_detector.detect(frame, keypoints);
-// 	// extract the x y coordinates of the keypoints:
-// 	for (int i=0; i<keypoints.size(); i++){
-// 		float x = keypoints[i].pt.x;
-// 		float y = keypoints[i].pt.y;
-// 		cout << x << " " << y << endl;
-// 	}
-
-// 	return std::make_tuple(x, y);
-// }
 
 int main( int argc, const char** argv )
 {
