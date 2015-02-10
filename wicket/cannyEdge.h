@@ -2,21 +2,22 @@
 #define CANNY_EDGE_INCLUDED
 #include <opencv2/imgproc/imgproc.hpp>
 //#include <opencv2/gpu/gpu.hpp>
-//#include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp>
-//#include <stdio.h>
 
 using namespace std;
 using namespace cv;
 
 extern Mat cur_frame;
-extern string inputFile;
+extern Mat cur_frame_gray;
+extern Mat cur_frame_applied;
+extern Mat gray_edges;
+extern string windowName;
+extern string trackbarWindow;
 
-static Mat src_gray;
 static Mat dst, result;
 
 static int edgeThreshold = 1;
-static int lowThreshold;
+static int lowThreshold = 55; //default threshold
 static int const maxThreshold = 100;
 static int ratio = 3;
 static int kernel_size = 3;

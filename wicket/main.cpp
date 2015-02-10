@@ -3,6 +3,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/gpu/gpu.hpp>
 #include "cannyEdge.h"
+#include "houghLine.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -15,6 +16,7 @@ using namespace cv::gpu;
 #define RES_720
 #define SHOW_RAW
 #define APPLY_CANNY_EDGE
+#define APPLY_HOUGH_LINE
 //#define APPLY_SOBEL_DERIV
 //#define APPLY_OPENING
 
@@ -30,8 +32,13 @@ const int cam_width = 1280;
 
 //global variables
 Mat cur_frame;
+Mat cur_frame_gray;
+Mat cur_frame_applied;
+Mat gray_edges;
 string inputFile;
 string trackbarWindow;
+string windowName;
+
 
 void getVideoFromFile(std::string filename, VideoCapture dest)
 {
@@ -141,6 +148,7 @@ int main(int argc, char *argv[])
 		if (cur_frame.data != NULL) {   //try opening as image
 			namedWindow(inputFile.c_str(), WINDOW_NORMAL);
 			resizeWindow(inputFile.c_str(), cam_width, cam_height);
+			windowName = inputFile;
 			trackbarWindow = inputFile + " trackbar";
 			namedWindow(trackbarWindow.c_str(), WINDOW_NORMAL);
 #ifdef APPLY_CANNY_EDGE
@@ -178,6 +186,7 @@ int main(int argc, char *argv[])
 		cerr << "Error connecting to a camera device" << endl;
 		exit(0);
 	}
+	windowName = "camera feed";
 	cameraSetup(cap);
 	while (true) {
 		cap.read(cur_frame);
@@ -185,7 +194,6 @@ int main(int argc, char *argv[])
 		imshow("raw", cur_frame);
 #endif
 		findWicket(cur_frame);
-		//imshow();
 		waitKey(10);
 	}
 	
