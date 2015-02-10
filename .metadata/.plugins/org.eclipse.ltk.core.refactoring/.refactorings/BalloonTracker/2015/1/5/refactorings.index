@@ -1,1 +1,4 @@
 1422391549305	Rename resource 'MeanShiftTracker'
+1422420027238	Rename resource 'GuassianOpticalFlow'
+1422733053004	Rename resource 'MeanShiftTracker.cpp'
+1422746934029	Rename resource 'meanshiftgpu.cpp'

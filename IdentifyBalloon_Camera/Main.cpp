@@ -20,9 +20,9 @@
 using namespace cv;
 using namespace std;
 
-#define FEED_SIZE 4
+#define FEED_SIZE 3
 #define PER_FRAME_TIME_LOGGING 0
-#define SHOW_FEED_WINDOW 1
+#define SHOW_FEED_WINDOW 0
 #define SHOW_OTHER_WINDOWS 0
 #define SHOW_OUTPUT_WINDOW 1
 #define DRAW_DEBUG_DATA 1
@@ -44,7 +44,7 @@ const int FEED_HEIGHT = 480;
 #if (FEED_SIZE == 3)
 
 const int FEED_WIDTH = 1280;
-const int FEED_HEIGHT = 960;
+const int FEED_HEIGHT = 720;
 
 #endif
 
