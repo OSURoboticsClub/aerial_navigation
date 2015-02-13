@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BalloonTracker/GoodFeaturesToTrack.cpp&apos; to &apos;WicketTracker.cpp&apos;" description="Rename resource &apos;GoodFeaturesToTrack.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="GoodFeaturesToTrack.cpp" name="WicketTracker.cpp" stamp="1423764359523" updateReferences="true"/>
+</session>
