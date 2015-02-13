@@ -6,6 +6,7 @@
 #include "houghLine.h"
 
 #include <iostream>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -15,6 +16,8 @@ using namespace cv::gpu;
 
 #define RES_720
 #define SHOW_RAW
+#define APPLY_RED_SPLIT
+#define APPLY_GAUSSIAN_BLUR
 #define APPLY_CANNY_EDGE
 #define APPLY_HOUGH_LINE
 //#define APPLY_SOBEL_DERIV
@@ -30,7 +33,7 @@ const int cam_height = 720;
 const int cam_width = 1280;
 #endif
 
-//global variables
+//main global variables
 Mat cur_frame;
 Mat cur_frame_gray;
 Mat cur_frame_applied;
@@ -38,7 +41,6 @@ Mat gray_edges;
 string inputFile;
 string trackbarWindow;
 string windowName;
-
 
 void getVideoFromFile(std::string filename, VideoCapture dest)
 {
@@ -128,6 +130,28 @@ Mat applyOpening(Mat src)
 	return dst;
 }
 
+Mat redChannelSplit(Mat frame)
+{
+	vector<GpuMat> rgb_split;
+	GpuMat gpu_frame(frame);
+	gpu::split(gpu_frame, rgb_split);
+
+	GpuMat red_channel = rgb_split[2];
+	GpuMat gpu_frame_gray;
+	gpu::cvtColor(gpu_frame, gpu_frame_gray, CV_BGR2GRAY);
+	GpuMat redFrame;
+	absdiff(red_channel, gpu_frame_gray, redFrame);
+	Mat final;
+	redFrame.download(final);
+
+	//clean up
+	gpu_frame.release();
+	red_channel.release();
+	gpu_frame_gray.release();
+	redFrame.release();
+	return final;
+}
+
 void findWicket(Mat frame)
 {
 	
@@ -137,6 +161,15 @@ void processFiles()
 {
 
 	exit(0);
+}
+
+void show(Mat frame)
+{
+	namedWindow("test", WINDOW_NORMAL);
+	resizeWindow("test", 1280, 720);
+	imshow("test", cur_frame_applied);
+	waitKey();
+	destroyWindow("test");
 }
 
 int main(int argc, char *argv[])
@@ -151,13 +184,33 @@ int main(int argc, char *argv[])
 			windowName = inputFile;
 			trackbarWindow = inputFile + " trackbar";
 			namedWindow(trackbarWindow.c_str(), WINDOW_NORMAL);
+#ifdef APPLY_RED_SPLIT
+			cerr << "Applying Red Channel Split: ";
+			cur_frame_applied = redChannelSplit(cur_frame);
+			cerr << "Success" << endl;
+#endif
+#ifdef APPLY_GAUSSIAN_BLUR
+			cerr << "Applying Gaussian Blur: ";
+			GpuMat cur_frame_blur;
+			cur_frame_blur.upload(cur_frame_applied);
+			GaussianBlur(cur_frame_blur, cur_frame_blur, Size(9,9), 2);
+			cur_frame_blur.download(cur_frame_applied);
+			cur_frame_blur.release();
+#ifdef APPLY_RED_SPLIT
+			cur_frame_applied.copyTo(cur_frame_gray);
+#endif
+			cur_frame_blur.release();
+			cerr << "Success" << endl;
+#endif
 #ifdef APPLY_CANNY_EDGE
-			applyCannyEdge(cur_frame);
-			cout << "Canny Edge applied" << endl;
+			cerr << "Applying Canny Edge: ";
+			applyCannyEdge(cur_frame_applied);
+			cerr << "Sucess" << endl;
 #endif
 #ifdef APPLY_HOUGH_LINE
+			cerr << "Applying Hough Line Transformation: ";
 			applyHoughLine(cur_frame);
-			cout << "Hough Lines applied" << endl;
+			cerr << "Success" << endl;
 #endif
 #ifdef APPLY_SOBEL_DERIV
 			cur_frame = applySobelDerivative(cur_frame);
@@ -167,16 +220,13 @@ int main(int argc, char *argv[])
 			cur_frame = applyOpening(cur_frame);
 			cout << "Opening morphology applied" << endl;
 #endif
-
 		} else {   //try opening as video
 			VideoCapture vid;
 			getVideoFromFile(inputFile.c_str(), vid);
 				//work on this later. not needed now
-		}
-		
-		//apply filter stuff
-		//work on this later... not needed now
+		}		
 		waitKey(0);
+		destroyAllWindows();
 		exit(0);
 	}
 

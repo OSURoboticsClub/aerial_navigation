@@ -3,6 +3,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 //#include <opencv2/gpu/gpu.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <iostream>
 
 using namespace std;
 using namespace cv;
@@ -17,11 +18,11 @@ extern string trackbarWindow;
 static Mat dst, result;
 
 static int edgeThreshold = 1;
-static int lowThreshold = 55; //default threshold
+static int lowThreshold = 10; //default threshold
 static int const maxThreshold = 100;
 static int ratio = 3;
 static int kernel_size = 3;
 
 void CannyThreshold(int, void*);
-Mat applyCannyEdge(Mat src);
+void applyCannyEdge(Mat src);
 #endif
