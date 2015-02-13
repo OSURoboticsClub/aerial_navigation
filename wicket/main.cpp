@@ -14,14 +14,17 @@ using namespace std;
 using namespace cv;
 using namespace cv::gpu;
 
-#define RES_720
+#define RES_480
 #define SHOW_RAW
-#define APPLY_RED_SPLIT
+#define APPLY_HSV_FILTER
 #define APPLY_GAUSSIAN_BLUR
 #define APPLY_CANNY_EDGE
 #define APPLY_HOUGH_LINE
-//#define APPLY_SOBEL_DERIV
-//#define APPLY_OPENING
+
+#ifdef RES_480
+const int cam_height = 480;
+const int cam_width = 640;
+#endif
 
 #ifdef RES_1080
 const int cam_height = 1080;
@@ -74,43 +77,7 @@ void wicketOverlay(Mat frame, Point p1, Point p2)
 	
 }
 
-Mat applySobelDerivative(Mat src)
-{
-	Mat src_gray;
-	Mat grad;
-	int scale = 1;
-	int delta = 0;
-	int ddepth = CV_16S;
 
-	int c;
-
-	//if( !src.data )
-	//{ return NULL; }
-
-	GaussianBlur( src, src, Size(3,3), 0, 0, BORDER_DEFAULT );
-
-	/// Convert it to gray
-	cvtColor( src, src_gray, CV_RGB2GRAY );
-
-	/// Generate grad_x and grad_y
-	Mat grad_x, grad_y;
-	Mat abs_grad_x, abs_grad_y;
-
-	/// Gradient X
-	//Scharr( src_gray, grad_x, ddepth, 1, 0, scale, delta, BORDER_DEFAULT );
-	Sobel( src_gray, grad_x, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT );
-	convertScaleAbs( grad_x, abs_grad_x );
-
-	/// Gradient Y
-	//Scharr( src_gray, grad_y, ddepth, 0, 1, scale, delta, BORDER_DEFAULT );
-	Sobel( src_gray, grad_y, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT );
-	convertScaleAbs( grad_y, abs_grad_y );
-
-	/// Total Gradient (approximate)
-	addWeighted( abs_grad_x, 0.5, abs_grad_y, 0.5, 0, grad );
-
-	return grad;
-}
 
 Mat applyOpening(Mat src)
 {
@@ -130,37 +97,48 @@ Mat applyOpening(Mat src)
 	return dst;
 }
 
-Mat redChannelSplit(Mat frame)
+Mat filterOrange(Mat frame)
 {
-	vector<GpuMat> rgb_split;
-	GpuMat gpu_frame(frame);
-	gpu::split(gpu_frame, rgb_split);
+	GpuMat gpuFrame(frame);
+	GpuMat convertedHue;
+	gpu::cvtColor(gpuFrame, convertedHue, CV_RGB2HSV);
 
-	GpuMat red_channel = rgb_split[2];
-	GpuMat gpu_frame_gray;
-	gpu::cvtColor(gpu_frame, gpu_frame_gray, CV_BGR2GRAY);
-	GpuMat redFrame;
-	absdiff(red_channel, gpu_frame_gray, redFrame);
+	vector<GpuMat> hsv_split;
+	gpu::split(convertedHue, hsv_split);
+
+	GpuMat hue, sat, val;
+	hsv_split[0].copyTo(hue);
+	hsv_split[1].copyTo(sat);
+	hsv_split[2].copyTo(val);
+
+	int min_hue = 70;
+	int max_hue = 130;
+	int min_sat = 70;
+	int max_sat = 255;
+	int min_val = 150;
+	int max_val = 255;
+
+	//apply threshold to each channel
+	GpuMat hue1, hue2, sat1, sat2, val1, val2, binaries;
+	gpu::threshold(hsv_split[0], hue1, min_hue, 179, THRESH_BINARY);
+	gpu::threshold(hsv_split[0], hue2, max_hue, 179, THRESH_BINARY_INV);
+	gpu::bitwise_and(hue1, hue2, hsv_split[0]);
+	gpu::threshold(hsv_split[1], sat1, min_sat, 255, THRESH_BINARY);
+	gpu::threshold(hsv_split[1], sat2, max_sat, 255, THRESH_BINARY_INV);
+	gpu::bitwise_and(sat1, sat2, hsv_split[1]);
+	gpu::threshold(hsv_split[2], val1, min_sat, 255, THRESH_BINARY);
+	gpu::threshold(hsv_split[2], val2, max_sat, 255, THRESH_BINARY_INV);
+	gpu::bitwise_and(val1, val2, hsv_split[2]);
+	//combine binaries
+	gpu::bitwise_and(hsv_split[0], hsv_split[1], binaries);
+	gpu::bitwise_and(hsv_split[2], binaries, binaries);
+
+	GpuMat finalGpu;
+	gpuFrame.copyTo(finalGpu, binaries);
+
 	Mat final;
-	redFrame.download(final);
-
-	//clean up
-	gpu_frame.release();
-	red_channel.release();
-	gpu_frame_gray.release();
-	redFrame.release();
+	finalGpu.download(final);
 	return final;
-}
-
-void findWicket(Mat frame)
-{
-	
-}
-
-void processFiles()
-{
-
-	exit(0);
 }
 
 void show(Mat frame)
@@ -170,6 +148,28 @@ void show(Mat frame)
 	imshow("test", cur_frame_applied);
 	waitKey();
 	destroyWindow("test");
+}
+
+Mat findWicket(Mat frame)
+{
+	Mat final;
+#ifdef APPLY_HSV_FILTER
+	final = filterOrange(frame);
+#endif
+#ifdef APPLY_GAUSSIAN_BLUR
+	GpuMat blur;
+	blur.upload(final);
+	GaussianBlur(blur, blur, Size(9,9), 2);
+	blur.download(final);
+	blur.release();	
+#endif
+#ifdef APPLY_CANNY_EDGE
+	final = applyCannyEdge(final);
+#endif
+#ifdef APPLY_HOUGH_LINE
+	final = applyHoughLine(final);
+#endif
+	return final;
 }
 
 int main(int argc, char *argv[])
@@ -184,42 +184,7 @@ int main(int argc, char *argv[])
 			windowName = inputFile;
 			trackbarWindow = inputFile + " trackbar";
 			namedWindow(trackbarWindow.c_str(), WINDOW_NORMAL);
-#ifdef APPLY_RED_SPLIT
-			cerr << "Applying Red Channel Split: ";
-			cur_frame_applied = redChannelSplit(cur_frame);
-			cerr << "Success" << endl;
-#endif
-#ifdef APPLY_GAUSSIAN_BLUR
-			cerr << "Applying Gaussian Blur: ";
-			GpuMat cur_frame_blur;
-			cur_frame_blur.upload(cur_frame_applied);
-			GaussianBlur(cur_frame_blur, cur_frame_blur, Size(9,9), 2);
-			cur_frame_blur.download(cur_frame_applied);
-			cur_frame_blur.release();
-#ifdef APPLY_RED_SPLIT
-			cur_frame_applied.copyTo(cur_frame_gray);
-#endif
-			cur_frame_blur.release();
-			cerr << "Success" << endl;
-#endif
-#ifdef APPLY_CANNY_EDGE
-			cerr << "Applying Canny Edge: ";
-			applyCannyEdge(cur_frame_applied);
-			cerr << "Sucess" << endl;
-#endif
-#ifdef APPLY_HOUGH_LINE
-			cerr << "Applying Hough Line Transformation: ";
-			applyHoughLine(cur_frame);
-			cerr << "Success" << endl;
-#endif
-#ifdef APPLY_SOBEL_DERIV
-			cur_frame = applySobelDerivative(cur_frame);
-			cout << "Sobel derivative applied" << endl;
-#endif
-#ifdef APPLY_OPENING
-			cur_frame = applyOpening(cur_frame);
-			cout << "Opening morphology applied" << endl;
-#endif
+			cur_frame_applied = findWicket(cur_frame);
 		} else {   //try opening as video
 			VideoCapture vid;
 			getVideoFromFile(inputFile.c_str(), vid);
@@ -236,17 +201,20 @@ int main(int argc, char *argv[])
 		cerr << "Error connecting to a camera device" << endl;
 		exit(0);
 	}
-	windowName = "camera feed";
+	windowName = "camera feed - applied";
+	namedWindow(windowName, WINDOW_NORMAL);
+	resizeWindow(windowName, cam_width, cam_height);
+	trackbarWindow = "trackbar";
+	namedWindow(trackbarWindow, WINDOW_NORMAL);
 	cameraSetup(cap);
 	while (true) {
 		cap.read(cur_frame);
 #ifdef SHOW_RAW
 		imshow("raw", cur_frame);
 #endif
-		findWicket(cur_frame);
+		cur_frame_applied = findWicket(cur_frame);
+		imshow(windowName, cur_frame_applied);
 		waitKey(10);
 	}
-	
-	
 	return 0;
 }

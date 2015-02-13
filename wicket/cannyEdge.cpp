@@ -4,9 +4,11 @@ void CannyThreshold(int, void*)
 {
 #ifndef APPLY_GAUSSIAN_BLUR
     /// Reduce noise with a kernel 3x3
-	blur( cur_frame_gray, result, Size(3,3) );
+	gpuFrame.upload(gray_frame);
+	gpu::blur( gpuFrame, hold, Size(3,3) );
+	hold.download(result);
 #else
-	cur_frame_gray.copyTo(result);
+	gray_frame.copyTo(result);
 #endif
 
 	/// Canny detector
@@ -17,25 +19,27 @@ void CannyThreshold(int, void*)
 
 	/// Using Canny's output as a mask, we display our result
 	dst = Scalar::all(0);
-	cur_frame.copyTo(dst, result); //mask with result
-	dst.copyTo(cur_frame_applied);
-	imshow(windowName.c_str(), cur_frame_applied);
+	original.copyTo(dst, result); //mask with result
+	dst.copyTo(final);
+	imshow(windowName.c_str(), final);
 }
 
-void applyCannyEdge(Mat src)
+Mat applyCannyEdge(Mat src)
 {
+	src.copyTo(original); //could be gpu optimized?
+
     /// Create a matrix of the same type and size as src (for dst)
 	dst.create( src.size(), src.type() );
 
 	/// Convert the image to grayscale
-	if (cur_frame_gray.empty()){
-		cerr << "frame converted to gray in cannyEdge.cpp (No Red Channel Split)" << endl;
-		cvtColor( src, cur_frame_gray, CV_BGR2GRAY );
-	}
+	gpuFrame.upload(src);
+	gpu::cvtColor( gpuFrame, hold, CV_BGR2GRAY );
+	hold.download(gray_frame);
 
 	/// Create a Trackbar for user to enter threshold
 	createTrackbar( "Canny Edge Min Threshold:", trackbarWindow.c_str(), &lowThreshold, maxThreshold, CannyThreshold );
 
 	/// Show the image
 	CannyThreshold(0, 0);
+	return final;
 }
