@@ -1,0 +1,291 @@
+#include "opencv2/video/tracking.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/gpu/gpu.hpp"
+
+#include <iostream>
+#include <ctype.h>
+#include <vector>
+#include <sys/time.h>
+#include <stdio.h>
+
+using namespace cv;
+using namespace cv::gpu;
+using namespace std;
+
+Mat image, frame0, frame1, gray, mask;
+GpuMat gpu_image, gpu_frame0, gpu_frame1, gpu_gray, gpu_mask;
+GpuMat prev_points, next_points, flow_status;
+
+
+Rect selection;
+Point origin;
+bool selectObject = false;
+int trackObject = 0;
+
+RNG rng(12345);
+
+static void onMouse( int event, int x, int y, int, void* )
+{
+	if( selectObject )
+	{
+		selection.x = MIN(x, origin.x);
+		selection.y = MIN(y, origin.y);
+		selection.width = std::abs(x - origin.x);
+		selection.height = std::abs(y - origin.y);
+
+		selection &= Rect(0, 0, image.cols, image.rows);
+	}
+
+	switch( event )
+	{
+	case CV_EVENT_LBUTTONDOWN:
+		origin = Point(x,y);
+		selection = Rect(x,y,0,0);
+		selectObject = true;
+		break;
+	case CV_EVENT_LBUTTONUP:
+		selectObject = false;
+		if( selection.width > 0 && selection.height > 0 )
+			trackObject = -1;
+		break;
+	}
+}
+static void download(const GpuMat& d_mat, vector<Point2f>& vec)
+{
+	vec.resize(d_mat.cols);
+	Mat mat(1, d_mat.cols, CV_32FC2, (void*)&vec[0]);
+	d_mat.download(mat);
+}
+static void download(const GpuMat& d_mat, vector<uchar>& vec)
+{
+	vec.resize(d_mat.cols);
+	Mat mat(1, d_mat.cols, CV_8UC1, (void*)&vec[0]);
+	d_mat.download(mat);
+}
+static void drawArrows(Mat& frame, const vector<Point2f>& prevPts, const vector<Point2f>& nextPts, const vector<uchar>& status, Scalar line_color = Scalar(0, 0, 255))
+{
+    for (size_t i = 0; i < prevPts.size(); ++i)
+    {
+        if (status[i])
+        {
+            int line_thickness = 1;
+
+            Point p = prevPts[i];
+            Point q = nextPts[i];
+
+            double angle = atan2((double) p.y - q.y, (double) p.x - q.x);
+
+            double hypotenuse = sqrt( (double)(p.y - q.y)*(p.y - q.y) + (double)(p.x - q.x)*(p.x - q.x) );
+
+            if (hypotenuse < 1.0)
+                continue;
+
+            // Here we lengthen the arrow by a factor of three.
+            q.x = (int) (p.x - 3 * hypotenuse * cos(angle));
+            q.y = (int) (p.y - 3 * hypotenuse * sin(angle));
+
+            // Now we draw the main line of the arrow.
+            line(frame, p, q, line_color, line_thickness);
+
+            // Now draw the tips of the arrow. I do some scaling so that the
+            // tips look proportional to the main line of the arrow.
+
+            p.x = (int) (q.x + 9 * cos(angle + CV_PI / 4));
+            p.y = (int) (q.y + 9 * sin(angle + CV_PI / 4));
+            line(frame, p, q, line_color, line_thickness);
+
+            p.x = (int) (q.x + 9 * cos(angle - CV_PI / 4));
+            p.y = (int) (q.y + 9 * sin(angle - CV_PI / 4));
+            line(frame, p, q, line_color, line_thickness);
+        }
+    }
+}
+
+int main( int argc, const char** argv )
+{
+
+	VideoCapture cap;
+	Rect trackWindow;
+
+	cap.open("/home/scott/Aerial/aerial_navigation/photos/SoccerGoal.MOV");
+
+	if( !cap.isOpened() )
+	{
+		cout << "***Could not initialize capturing...***\n";
+		return -1;
+	}
+	//GoodFeaturesToTrackDetector_GPU(maxCorners=1000, qualityLevel=0.01, minDistance=0.0, blockSize=3, useHarrisDetector=false, harrisK=0.04)
+	gpu::GoodFeaturesToTrackDetector_GPU good(1000, 0.1, 1.0, 3, true, 0.04);
+	gpu::FAST_GPU fast(12, true, 0.5);
+	Mat erd = getStructuringElement(MORPH_RECT, Size(3,3));
+
+	KalmanFilter KF(4, 2, 0);
+	Mat_<float> state(4, 1); /* (x, y, Vx, Vy) */
+	Mat processNoise(4, 1, CV_32F);
+	Mat_<float> measurement(2,1); measurement.setTo(Scalar(0));
+	Point pt(0, 0);
+
+
+	PyrLKOpticalFlow pyrLK;
+
+	pyrLK.winSize.width = 1920;
+	pyrLK.winSize.height = 1080;
+	pyrLK.maxLevel = 1;
+	pyrLK.iters = 1;
+
+	namedWindow( "Good Features to Track Detector", 0 );
+	setMouseCallback( "Good Features to Track Detector", onMouse, 0 );
+
+	bool paused = false;
+	cap >> frame0;
+	paused = true;
+	vector<Point2f> prevPts, nextPts;
+	vector<KeyPoint> kp;
+	vector<uchar> status;
+	vector<Point2f> ctr,kal;
+
+	ctr.push_back(pt);
+	kal.push_back(pt);
+
+	for(;;)
+	{
+		if( !paused )
+		{
+			frame0.copyTo(frame1);
+			cap >> frame0;
+			if( frame0.empty() )
+				break;
+		}
+
+		frame0.copyTo(image);
+
+		if( !paused )
+		{
+			next_points.copyTo(prev_points);
+			gpu_gray.copyTo(gpu_frame1);
+
+			gpu_frame0.upload(frame0);
+			gpu::cvtColor(gpu_frame0, gpu_gray, COLOR_BGR2GRAY);
+
+			if(trackObject < 0) {
+				Point p = Point(selection.tl().x + (selection.width / 2), selection.tl().y + (selection.height / 2));
+				cout << "p" << p << endl;
+				KF.statePre.at<float>(0) = p.x;
+				KF.statePre.at<float>(1) = p.y;
+				KF.statePre.at<float>(2) = 0;
+				KF.statePre.at<float>(3) = 0;
+				KF.transitionMatrix = *(Mat_<float>(4, 4) << 1,0,0,0,   0,1,0,0,  0,0,1,0,  0,0,0,1);
+
+				setIdentity(KF.measurementMatrix);
+				setIdentity(KF.processNoiseCov, Scalar::all(1e-4));
+				setIdentity(KF.measurementNoiseCov, Scalar::all(1e-1));
+				setIdentity(KF.errorCovPost, Scalar::all(.1));
+
+				ctr.clear();
+				kal.clear();
+
+				trackObject = 1;
+			}
+			if(trackObject){
+
+				Mat prediction = KF.predict();
+				Point predictPt(prediction.at<float>(0),prediction.at<float>(1));
+//				cout << "selection" << selection.tl() + Point(selection.width/2, selection.height/2) << endl;
+//				cout << "prediction" << predictPt << endl;
+				if(predictPt.x != 0 || predictPt.y != 0){
+					selection.x = predictPt.x - (selection.width/2);
+					selection.y = predictPt.y - (selection.height/2);
+				}
+//				cout << "selection after prediction" <<  selection.tl() + Point(selection.width/2, selection.height/2) << endl;
+				gpu_mask = GpuMat(gpu_gray.size(), CV_8UC1, Scalar::all(0));
+				gpu_mask(selection).setTo(Scalar::all(255));
+
+				gpu::threshold(gpu_gray, gpu_gray, 175, 255, THRESH_BINARY);
+				//gpu::Laplacian(gpu_gray, gpu_gray, gpu_gray.depth(), 3, 1.0, BORDER_DEFAULT);
+
+				//gpu::erode(gpu_gray, gpu_gray, erd, Point(-1, -1), 1);
+				gpu_gray.download(gray);
+
+//				good(gpu_gray, next_points, gpu_mask);
+				fast(gpu_gray, gpu_mask, next_points);
+				fast.downloadKeypoints(next_points, kp);
+
+				Point2f mean(0,0);
+				for(int i = 0; i < kp.size(); i++){
+					mean.x += kp[i].pt.x;
+					mean.y += kp[i].pt.y;
+				}
+				mean.x = mean.x / kp.size();
+				mean.y = mean.y / kp.size();
+
+				measurement(0) = mean.x;
+				measurement(1) = mean.y;
+
+				ctr.push_back(mean);
+
+				Mat estimated = KF.correct(measurement);
+				Point statePt(estimated.at<float>(0),estimated.at<float>(1));
+				kal.push_back(statePt);
+;
+				//pyrLK.sparse(gpu_frame1, gpu_gray, prev_points, next_points, flow_status);
+
+			}
+
+			//prevPts = vector<Point2f>(prev_points.cols);
+			//download(prev_points, prevPts);
+
+
+			drawKeypoints(image, kp, image, Scalar(255, 0, 0));
+			drawKeypoints(gray, kp, gray, Scalar(255, 0, 0));
+			rectangle(image, selection, Scalar(0, 0, 255), 1, 8, 0);
+			rectangle(gray, selection, Scalar(0, 0, 255), 1, 8, 0);
+			circle( image, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+			circle( gray, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+			circle( image, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+			circle( gray, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+			imshow("lap",gray);
+//			nextPts = vector<Point2f>(next_points.cols);
+//			download(next_points, nextPts);
+
+			//status = vector<uchar>(flow_status.cols);
+			//download(flow_status, status);
+			//drawArrows(image, prevPts, nextPts, status, Scalar(0, 0, 255));
+//			for( int i = 0; i < nextPts.size(); i++ )
+//			{
+//				circle( image, nextPts[i], 4, Scalar(255, 0, 0), -1, 8, 0 );
+//				circle( gray, nextPts[i], 4, Scalar(255, 0, 0), -1, 8, 0 );
+//			}
+//			rectangle(image, selection, Scalar(0, 0, 255), 1, 8, 0);
+//			rectangle(gray, selection, Scalar(255), 1, 8, 0);
+//			imshow("lap",gray);
+		}
+
+
+		if( trackObject < 0 )
+			paused = false;
+		if( selectObject && selection.width > 0 && selection.height > 0 )
+		{
+			Mat mask(image, selection);
+			bitwise_not(mask, mask);
+		}
+		imshow( "Good Features to Track Detector", image );
+
+		char c = (char)waitKey(10);
+		if( c == 27 )
+			break;
+		switch(c)
+		{
+		case 'c':
+		trackObject = 0;
+		break;
+		case 'p':
+		paused = !paused;
+		break;
+		default:
+			;
+		}
+	}
+
+	return 0;
+}

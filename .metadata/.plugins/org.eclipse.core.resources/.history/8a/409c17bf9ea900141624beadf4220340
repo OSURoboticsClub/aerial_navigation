@@ -1,0 +1,178 @@
+#include "opencv2/video/tracking.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/gpu/gpu.hpp"
+
+#include <iostream>
+#include <ctype.h>
+#include <vector>
+#include <sys/time.h>
+
+using namespace cv;
+using namespace std;
+
+
+Mat image;
+
+bool backprojMode = false;
+bool selectObject = false;
+int trackObject = 0;
+bool showHist = true;
+
+Point origin;
+Rect selection;
+int vmin = 10, vmax = 256, smin = 30;
+
+static void onMouse( int event, int x, int y, int, void* )
+{
+	if( selectObject )
+	{
+		selection.x = MIN(x, origin.x);
+		selection.y = MIN(y, origin.y);
+		selection.width = std::abs(x - origin.x);
+		selection.height = std::abs(y - origin.y);
+
+		selection &= Rect(0, 0, image.cols, image.rows);
+	}
+
+	switch( event )
+	{
+	case CV_EVENT_LBUTTONDOWN:
+		origin = Point(x,y);
+		selection = Rect(x,y,0,0);
+		selectObject = true;
+		break;
+	case CV_EVENT_LBUTTONUP:
+		selectObject = false;
+		if( selection.width > 0 && selection.height > 0 )
+			trackObject = -1;
+		break;
+	}
+}
+
+static void help()
+{
+	cout << "\nThis is a demo that shows mean-shift based tracking\n"
+			"You select a color objects such as your face and it tracks it.\n"
+			"This reads from video camera (0 by default, or the camera number the user enters\n"
+			"Usage: \n"
+			"   ./camshiftdemo [camera number]\n";
+
+	cout << "\n\nHot keys: \n"
+			"\tESC - quit the program\n"
+			"\tc - stop the tracking\n"
+			"\tb - switch to/from backprojection view\n"
+			"\th - show/hide object histogram\n"
+			"\tp - pause video\n"
+			"To initialize tracking, select the object with mouse\n";
+}
+
+const char* keys =
+{
+		"{1|  | 0 | camera number}"
+};
+long getTimeDelta(struct timeval timea, struct timeval timeb) {
+	return 1000000 * (timeb.tv_sec - timea.tv_sec) +
+			(int(timeb.tv_usec) - int(timea.tv_usec));
+}
+
+
+int main( int argc, const char** argv )
+{
+	help();
+	struct timeval timea, timeb, timeS, timeE;
+	long totalTime = 0, camTime = 0, kalTime = 0;
+	int nFrames = 0;
+
+	VideoCapture cap;
+	Rect trackWindow;
+	CommandLineParser parser(argc, argv, keys);
+
+	cap.open(0);
+
+	if( !cap.isOpened() )
+	{
+		help();
+		cout << "***Could not initialize capturing...***\n";
+		cout << "Current parameter's value: \n";
+		parser.printParams();
+		return -1;
+	}
+
+
+	namedWindow( "MeanShift Demo", 0 );
+	namedWindow( "Out1", 0);
+	namedWindow( "Out2", 0);
+	setMouseCallback( "MeanShift Demo", onMouse, 0 );
+	createTrackbar( "SP", "CamShift Demo", &vmin, 20, 0 );
+	createTrackbar( "SR", "CamShift Demo", &vmax, 20, 0 );
+
+	Mat frame, hsv, ms1, ms2, blank = Mat::zeros(640, 480, CV_8UC1);
+	gpu::GpuMat gpuframe, gpuf2, gpuf3, gpu4c, gpuf0;
+	vector<gpu::GpuMat> hsvplanes(4);
+
+	bool paused = false;
+
+	cout << "optimized code: " << useOptimized() << endl;
+	cout << "cuda devices: 	 "<< gpu::getCudaEnabledDeviceCount() << endl;
+	cout << "current device: " << gpu::getDevice() << endl;
+	hsvplanes[3].upload(blank);
+	for(;;)
+	{
+		gettimeofday(&timea, NULL);
+		if( !paused )
+		{
+			cap >> frame;
+			nFrames++;
+			if( frame.empty() )
+				break;
+			gpuframe.upload(frame);
+		}
+
+
+
+		if( !paused )
+		{
+			gpu::cvtColor(gpuframe, gpuframe, COLOR_BGR2HSV);
+			gpu::split(gpuframe, hsvplanes);
+			gpu::merge(hsvplanes, 4, gpu4c);
+			gpu::meanShiftProc(hsvplanes[0], gpuf2, gpuf3, vmin, vmax);
+
+		}
+
+		gettimeofday(&timeb, NULL);
+		totalTime += getTimeDelta(timea, timeb);
+		gpuframe.download(image);
+		gpuf2.download(ms1);
+		gpuf3.download(ms2);
+		imshow( "MeanShift Demo", image );
+		imshow( "Out1", ms1 );
+		imshow( "Out2", ms2 );
+
+
+		char c = (char)waitKey(5);
+		if( c == 27 )
+			break;
+		switch(c)
+		{
+		case 'b':
+			backprojMode = !backprojMode;
+			break;
+		case 'p':
+			cout << "frames      : " << nFrames << endl;
+			cout << "TotalTime   : " << double(totalTime)/1000000.0 << endl;
+			cout << "FPS         : " << double(nFrames)/(double(totalTime)/1000000.0) << endl;
+			totalTime = 0;
+			nFrames = 0;
+			paused = !paused;
+			break;
+		default:
+			;
+		}
+	}
+
+	return 0;
+}
+
+
+
