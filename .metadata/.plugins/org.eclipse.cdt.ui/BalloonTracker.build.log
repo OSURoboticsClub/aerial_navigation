@@ -1,4 +1,4 @@
-19:22:14 **** Incremental Build of configuration Release Host for project BalloonTracker ****
+12:37:26 **** Incremental Build of configuration Release Host for project BalloonTracker ****
 make all 
 Building file: ../WicketTracker.cpp
 Invoking: NVCC Compiler
@@ -12,5 +12,5 @@ Invoking: NVCC Linker
 Finished building target: BalloonTracker
  
 
-19:22:15 Build Finished (took 1s.158ms)
+12:37:28 Build Finished (took 1s.206ms)
 

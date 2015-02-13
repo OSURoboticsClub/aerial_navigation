@@ -1,4 +1,4 @@
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>Got Camshift Tracker example working. Shows promise. Want to try on GPU&\#x0A;and in different settings.</message>\n<message>TestCommit for Trying out the image files</message>\n<message>Changed picture names to have meaning</message>\n</messages>
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>Added ability to use ORB feature tracking and matching</message>\n<message>Adding tracking programs</message>\n<message>Got Camshift Tracker example working. Shows promise. Want to try on GPU&\#x0A;and in different settings.</message>\n<message>TestCommit for Trying out the image files</message>\n<message>Changed picture names to have meaning</message>\n</messages>
 eclipse.preferences.version=1
 resourcehistory_graph_split=500,500
 resourcehistory_rev_split=700,300
