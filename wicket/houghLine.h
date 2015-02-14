@@ -18,7 +18,7 @@ static int max_trackbar = 150;
 
 static Mat hough_final; //final returning frame
 
-static int p_trackbar = 0; //starting trackbar val
+static int p_trackbar = 20; //starting trackbar val
 
 void Probabilistic_Hough(int, void*);
 Mat applyHoughLine(Mat frame);

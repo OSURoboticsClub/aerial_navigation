@@ -20,7 +20,7 @@ static GpuMat gpuFrame, hold;
 
 
 static int edgeThreshold = 1;
-static int lowThreshold = 20; //default threshold
+static int lowThreshold = 30; //default threshold
 static int const maxThreshold = 100;
 static int ratio = 3;
 static int kernel_size = 3;

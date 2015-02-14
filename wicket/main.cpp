@@ -14,8 +14,11 @@ using namespace std;
 using namespace cv;
 using namespace cv::gpu;
 
+#define DEBUG
+//#define CALC_FPS
+
 #define RES_480
-#define SHOW_RAW
+//#define SHOW_RAW
 #define APPLY_HSV_FILTER
 #define APPLY_GAUSSIAN_BLUR
 #define APPLY_CANNY_EDGE
@@ -89,7 +92,7 @@ Mat applyOpening(Mat src)
 	int const max_elem = 2;
 	int const max_kernel_size = 21;
 	//not quite sure how this function works yet
-	int operation = morph_operator + 2; //+2 MORPH_OPEN, +3 MORPH_CLOSE, +4 MORPH_TOPHAT, +5 MORPH_BLACKHAT
+	int operation = morph_operator + 2;
 	Mat element = getStructuringElement( morph_elem, Size( 2*morph_size + 1, 2*morph_size+1 ), Point( morph_size, morph_size ) );
 
 	//apply opening morphology
@@ -144,24 +147,23 @@ Mat filterOrange(Mat frame)
 void show(Mat frame)
 {
 	namedWindow("test", WINDOW_NORMAL);
-	resizeWindow("test", 1280, 720);
-	imshow("test", cur_frame_applied);
-	waitKey();
-	destroyWindow("test");
+	resizeWindow("test", cam_width, cam_height);
+	imshow("test", frame);
 }
 
 Mat findWicket(Mat frame)
 {
-	Mat final;
+	Mat final(frame);
 #ifdef APPLY_HSV_FILTER
-	final = filterOrange(frame);
+	final = filterOrange(final);
 #endif
 #ifdef APPLY_GAUSSIAN_BLUR
 	GpuMat blur;
 	blur.upload(final);
-	GaussianBlur(blur, blur, Size(9,9), 2);
+	GaussianBlur(blur, blur, Size(5,5), 2);
 	blur.download(final);
-	blur.release();	
+	blur.release();
+	show(final);
 #endif
 #ifdef APPLY_CANNY_EDGE
 	final = applyCannyEdge(final);
@@ -207,14 +209,43 @@ int main(int argc, char *argv[])
 	trackbarWindow = "trackbar";
 	namedWindow(trackbarWindow, WINDOW_NORMAL);
 	cameraSetup(cap);
+
+	cout << "In capture ..." << endl;
+#ifdef CALC_FPS
+	string str = "Captures per second: ";
+	float cap_per_sec = 0;
+	time_t time1 = time(NULL);
+	time_t time2 = time(NULL);
+	cout << str << "00.00";
+	cout.flush();
+#endif
+	int keyPress;
 	while (true) {
 		cap.read(cur_frame);
 #ifdef SHOW_RAW
 		imshow("raw", cur_frame);
 #endif
 		cur_frame_applied = findWicket(cur_frame);
-		imshow(windowName, cur_frame_applied);
-		waitKey(10);
+		if(!cur_frame_applied.empty()){
+			imshow(windowName, cur_frame_applied);
+		}
+		
+#ifdef CALC_FPS
+		cap_per_sec += 1;
+		time2 = time(NULL);
+		if (difftime(time2, time1) > 1) {
+			time1 = time(NULL);
+			cout << string(str.length() + 5, '\b');
+			cout << str;
+			cout.flush();
+			fprintf(stderr, "%2.2f", cap_per_sec);
+			cap_per_sec = 0;
+		}
+#endif
+		keyPress = waitKey(1);
+		if (keyPress != -1) {
+			break;
+		}
 	}
 	return 0;
 }
