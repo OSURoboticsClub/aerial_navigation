@@ -6634,3 +6634,175 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2015-02-23 15:51:39.773
 !MESSAGE Indexed 'WicketTracking' (1 sources, 0 headers) in 0.03 sec: 92 declarations; 295 references; 10 unresolved inclusions; 0 syntax errors; 272 unresolved names (41.27%)
+!SESSION 2015-02-23 18:27:21.986 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_75
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-23 18:29:16.839
+!MESSAGE Indexed 'WicketTracking' (1 sources, 207 headers) in 39.83 sec: 38,306 declarations; 62,585 references; 0 unresolved inclusions; 20 syntax errors; 424 unresolved names (0.42%)
+
+!ENTRY org.eclipse.rse.core 4 0 2015-02-23 18:29:51.820
+!MESSAGE Unexpected error retrieving password.
+!STACK 0
+org.eclipse.equinox.security.storage.StorageException: No password provided.
+	at org.eclipse.equinox.internal.security.storage.SecurePreferences.get(SecurePreferences.java:264)
+	at org.eclipse.equinox.internal.security.storage.SecurePreferencesWrapper.get(SecurePreferencesWrapper.java:106)
+	at org.eclipse.rse.core.PasswordPersistenceManager.basicGet(PasswordPersistenceManager.java:453)
+	at org.eclipse.rse.core.PasswordPersistenceManager.findPassword(PasswordPersistenceManager.java:529)
+	at org.eclipse.rse.core.PasswordPersistenceManager.find(PasswordPersistenceManager.java:680)
+	at org.eclipse.rse.core.PasswordPersistenceManager.find(PasswordPersistenceManager.java:660)
+	at org.eclipse.rse.ui.subsystems.StandardCredentialsProvider.acquireCredentials(StandardCredentialsProvider.java:207)
+	at org.eclipse.rse.core.subsystems.AuthenticatingConnectorService.acquireCredentials(AuthenticatingConnectorService.java:210)
+	at org.eclipse.rse.core.subsystems.SubSystem.promptForPassword(SubSystem.java:2642)
+	at org.eclipse.rse.core.subsystems.SubSystem$1.run(SubSystem.java:2536)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:164)
+	at org.eclipse.ui.internal.UISynchronizer$3.run(UISynchronizer.java:158)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-02-23 18:29:53.072
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteExecutionException: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:171)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.rdt.sync.core.exceptions.RemoteExecutionException: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.getRemoteGitVersion(GitRemoteSyncConnection.java:1031)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:165)
+	... 6 more
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:226)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:200)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.getRemoteGitVersion(GitRemoteSyncConnection.java:1027)
+	... 7 more
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-02-23 18:29:53.073
+!MESSAGE org.eclipse.ptp.rdt.sync.core.exceptions.RemoteExecutionException: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+!STACK 0
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteExecutionException: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.getRemoteGitVersion(GitRemoteSyncConnection.java:1031)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.<init>(GitRemoteSyncConnection.java:165)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getSyncConnection(GitSyncService.java:211)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.getMergeConflictFiles(GitSyncService.java:174)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:399)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.ptp.remote.core.exception.RemoteConnectionException
+	at org.eclipse.ptp.internal.remote.rse.core.RSEConnection.open(RSEConnection.java:342)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:226)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:200)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.getRemoteGitVersion(GitRemoteSyncConnection.java:1027)
+	... 7 more
+
+!ENTRY org.eclipse.rse.ui 4 0 2015-02-23 20:43:08.906
+!MESSAGE RSEG1058
+!STACK 0
+java.lang.Exception
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.logMessage(SystemMessageDialog.java:449)
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.open(SystemMessageDialog.java:459)
+	at org.eclipse.rse.internal.connectorservice.ssh.SshConnectorService$SessionLostHandler.run(SshConnectorService.java:332)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ptp.rdt.sync.ui 4 4 2015-02-23 20:43:11.169
+!MESSAGE Error
+!STACK 1
+org.eclipse.ptp.rdt.sync.core.exceptions.RemoteSyncException: java.io.IOException: Failed to open exec channel
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:398)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.sync(GitRemoteSyncConnection.java:893)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:435)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to open exec channel
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.launchCommandWithRSE(RSEProcessBuilder.java:171)
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.start(RSEProcessBuilder.java:146)
+	at org.eclipse.ptp.remote.core.AbstractRemoteProcessBuilder.start(AbstractRemoteProcessBuilder.java:173)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:238)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:200)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.executeRemoteCommand(GitRemoteSyncConnection.java:1117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:389)
+	... 5 more
+Caused by: com.jcraft.jsch.JSchException: session is down
+	at com.jcraft.jsch.Channel.sendChannelOpen(Channel.java:667)
+	at com.jcraft.jsch.Channel.connect(Channel.java:151)
+	at com.jcraft.jsch.Channel.connect(Channel.java:145)
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.launchCommandWithRSE(RSEProcessBuilder.java:168)
+	... 11 more
+!SUBENTRY 1 org.eclipse.ptp.rdt.sync.git.core 4 0 2015-02-23 20:43:11.169
+!MESSAGE java.io.IOException: Failed to open exec channel
+!STACK 0
+java.io.IOException: Failed to open exec channel
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.launchCommandWithRSE(RSEProcessBuilder.java:171)
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.start(RSEProcessBuilder.java:146)
+	at org.eclipse.ptp.remote.core.AbstractRemoteProcessBuilder.start(AbstractRemoteProcessBuilder.java:173)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:238)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.CommandRunner.executeRemoteCommand(CommandRunner.java:200)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.executeRemoteCommand(GitRemoteSyncConnection.java:1117)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.commitRemoteFiles(GitRemoteSyncConnection.java:389)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitRemoteSyncConnection.sync(GitRemoteSyncConnection.java:893)
+	at org.eclipse.ptp.internal.rdt.sync.git.core.GitSyncService.synchronize(GitSyncService.java:435)
+	at org.eclipse.ptp.internal.rdt.sync.core.SyncRunner.synchronize(SyncRunner.java:38)
+	at org.eclipse.ptp.rdt.sync.core.SyncManager$SynchronizeJob.run(SyncManager.java:79)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: com.jcraft.jsch.JSchException: session is down
+	at com.jcraft.jsch.Channel.sendChannelOpen(Channel.java:667)
+	at com.jcraft.jsch.Channel.connect(Channel.java:151)
+	at com.jcraft.jsch.Channel.connect(Channel.java:145)
+	at org.eclipse.ptp.internal.remote.rse.core.RSEProcessBuilder.launchCommandWithRSE(RSEProcessBuilder.java:168)
+	... 11 more

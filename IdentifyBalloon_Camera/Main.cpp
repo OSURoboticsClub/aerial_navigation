@@ -1,7 +1,7 @@
 /* Keep the webcam from locking up when you interrupt a frame capture */
 //volatile int quit_signal=0;
 
-#include "opencv2/opencv.hpp"
+//#include "opencv2/opencv.hpp"
 #include "opencv2/gpu/gpu.hpp"
 #include <sys/time.h>
 #include <cstdio>

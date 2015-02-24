@@ -96,6 +96,36 @@ void proccess_frame(Mat morphElement, int threshold){
 	morphologyEx(gpu_gray, gpu_gray, CV_MOP_OPEN, morphElement);
 
 }
+//void gpu_pyramid(GpuMat &src, vector<GpuMat> &dst, int maxlevel){
+//	if(dst.size() < maxlevel){
+//		dst = vector<GpuMat>(maxlevel);
+//	}
+//	gpu::pyrDown(src, dst[0]);
+//	for(i = 0; i < maxlevel; i++){
+//		gpu::pyrDown(dst[i], dst[i+1]);
+//	}
+//}
+//void gpu_pyramid(vector<GpuMat> &src, vector<vector<GpuMat> > &dst, int maxlevel){
+//	for(int i = 0; i < src.size(); i++){
+//		gpu_pyramid(src[i], dst[i], maxlevel);
+//	}
+//}
+//void create_minmax_mask(Size src, vector<GpuMat> &masks){
+//	if(masks.size() < 3){
+//		masks = vector<GpuMat>(4);
+//	}
+//	vector<Point> tl(4), br(4);
+//	tl[0] = Point(0,0);
+//	tl[1] = Point((src.width/2) + 1, 0);
+//	tl[2] = Point(0, (src.height/2) + 1);
+//	tl[3] = Point((src.width/2) + 1, (src.height/2) + 1);
+//	br[0] = Point(src.width/2, src.height/2);
+//	br[1] = Point(src.width, src.height/2);
+//	br[0] = Point(src.width/2, src.height);
+//	br[0] = Point(src.width, src.height);
+//
+//	masks[i](Rect(tl[i], br[i]))
+//}
 void match_template(GpuMat &test, vector<GpuMat> &train, vector<int> &index, double &best_val, Point &best_loc, int &idx){
 	int itr = 0;
 
@@ -110,7 +140,7 @@ void match_template(GpuMat &test, vector<GpuMat> &train, vector<int> &index, dou
 			best_val = max_value;
 			idx = i;
 		}
-		if (max_value > .90){
+		if (max_value > .80){
 			break;
 
 		}
@@ -136,28 +166,28 @@ int main( int argc, const char** argv )
 	int nFrames = 0;
 
 	//cap.open("/home/scott/Aerial/aerial_navigation/photos/SoccerGoal.MOV");
-	//cap.open("/home/ubuntu/Aerial/photos/SoccerGoal2_464.mp4");
-	cap.open("/home/scott/Aerial//aerial_navigation/photos/SoccerGoal2.mp4");
+	cap.open("/home/ubuntu/Aerial/photos/SoccerGoal2_464.mp4");
+//	cap.open("/home/scott/Aerial//aerial_navigation/photos/SoccerGoal2.mp4");
 
 	cerr << cap.get(CV_CAP_PROP_FRAME_WIDTH) << endl;
 	cerr << cap.get(CV_CAP_PROP_FRAME_HEIGHT) << endl;
 	vector<string> screenshots;
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh1_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh2_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh3_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh4_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh5_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh6_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh7_464.png");
-	//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh8_464.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh1.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh2.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh3.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh4.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh5.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh6.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh7.png");
-	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh8.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh1_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh2_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh3_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh4_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh5_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh6_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh7_464.png");
+	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh8_464.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh1.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh2.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh3.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh4.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh5.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh6.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh7.png");
+//	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh8.png");
 
 
 	if( !cap.isOpened() )
@@ -178,7 +208,7 @@ int main( int argc, const char** argv )
 	Rect bb;
 
 	bool paused = false;
-	bool debug = false;
+	bool debug = true;
 	cap >> frame0;
 	paused = true;
 	vector<int> index(8);
@@ -216,6 +246,7 @@ int main( int argc, const char** argv )
 			imshow("Good Features to Track Detector", image);
 			waitKey(10);
 		}
+		break;
 	}
 
 	for(;;)
@@ -248,8 +279,9 @@ int main( int argc, const char** argv )
 
 				Mat prediction = KF.predict();
 				Point predictPt(prediction.at<float>(0),prediction.at<float>(1));
-
+				bool smallwindow = false;
 				if(predictPt.x != 0 || predictPt.y != 0){
+					smallwindow = true;
 					selection.x = predictPt.x - (selection.width/2);
 					selection.y = predictPt.y - (selection.height/2);
 				}
@@ -264,18 +296,38 @@ int main( int argc, const char** argv )
 
 				double best_max_value = 0;
 				Point best_location;
+				Rect predictRect;
 				int idx = 0;
 				gettimeofday(&timeS, NULL);
+				if(smallwindow){
 
-				match_template(gpu_gray, train_coll, index, best_max_value, best_location, idx);
+					int wt = 1.5*selection.width;
+					int ht = 1.5*selection.height;
+					predictRect = Rect(predictPt.x - wt, predictPt.y - ht, predictPt.x + wt, predictPt.y + ht);
+
+					GpuMat roi(gpu_gray, predictRect);
+
+					match_template(roi, train_coll, index, best_max_value, best_location, idx);
+
+				} else
+					match_template(gpu_gray, train_coll, index, best_max_value, best_location, idx);
 
 				gettimeofday(&timeE, NULL);
 				matchTime += getTimeDelta(timeS, timeE);
 
 				if (best_max_value > .8){
-					bb = Rect(best_location.x,best_location.y, selections[index[idx]].width, selections[index[idx]].height);
-					box_update(KF, bb, measurement, ctr_point, kal_point);
-				}
+					if(smallwindow){
+						best_location.x = best_location.x + predictRect.tl().x;
+						best_location.y = best_location.y + predictRect.tl().y;
+						bb = Rect(best_location.x,best_location.y, selections[index[idx]].width, selections[index[idx]].height);
+						box_update(KF, bb, measurement, ctr_point, kal_point);
+					} else {
+						bb = Rect(best_location.x,best_location.y, selections[index[idx]].width, selections[index[idx]].height);
+						box_update(KF, bb, measurement, ctr_point, kal_point);
+					}
+				} else
+					smallwindow = false;
+
 			}
 		}
 

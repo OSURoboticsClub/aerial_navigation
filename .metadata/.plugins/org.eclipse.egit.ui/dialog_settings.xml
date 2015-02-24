@@ -9,27 +9,31 @@
 		<item value="scottjordan &lt;scott.m.jordan91@gmail.com&gt;"/>
 		<item value="ScottJordan &lt;Scott.M.Jordan91@gmail.com&gt;"/>
 	</list>
-	<section name="GitCommitMessageComponent">
-	</section>
 	<section name="org.eclipse.egit.ui.internal.dialogs.MergeTargetSelectionDialog.dialogBounds">
 		<item value="613" key="DIALOG_WIDTH"/>
 		<item value="72" key="DIALOG_Y_ORIGIN"/>
-		<item value="621" key="DIALOG_X_ORIGIN"/>
 		<item value="705" key="DIALOG_HEIGHT"/>
+		<item value="621" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item value="413" key="DIALOG_Y_ORIGIN"/>
+		<item value="748" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.merge.MergeResultDialog.dialogBounds">
 		<item value="1069" key="DIALOG_WIDTH"/>
 		<item value="386" key="DIALOG_Y_ORIGIN"/>
-		<item value="403" key="DIALOG_X_ORIGIN"/>
 		<item value="255" key="DIALOG_HEIGHT"/>
+		<item value="403" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
 		<item value="633" key="DIALOG_WIDTH"/>
 		<item value="239" key="DIALOG_Y_ORIGIN"/>
+		<item value="499" key="DIALOG_HEIGHT"/>
 		<item value="602" key="DIALOG_X_ORIGIN"/>
-		<item value="527" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>
