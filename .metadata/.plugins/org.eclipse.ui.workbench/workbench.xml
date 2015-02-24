@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="24" version="2.0">
+<workbench progressCount="25" version="2.0">
 <workbenchAdvisor/>
 <window height="1056" maximized="true" width="927" x="992" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -34,40 +34,23 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="WicketTracker.cpp" partName="WicketTracker.cpp" path="/home/scott/Aerial/aerial_navigation/BalloonTracker/WicketTracker.cpp" title="WicketTracker.cpp" tooltip="BalloonTracker/WicketTracker.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="WicketTracker.cpp" partName="WicketTracker.cpp" path="/home/scott/Aerial/aerial_navigation/BalloonTracker/WicketTracker.cpp" title="WicketTracker.cpp" tooltip="BalloonTracker/WicketTracker.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/BalloonTracker/WicketTracker.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1668" selectionTopPixel="484"/>
+<editorState selectionHorizontalPixel="0" selectionLength="17132" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="CamShiftTracker.cpp" partName="CamShiftTracker.cpp" path="/home/scott/Aerial/aerial_navigation/BalloonTracker/CamShiftTracker.cpp" title="CamShiftTracker.cpp" tooltip="BalloonTracker/CamShiftTracker.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="CamShiftTracker.cpp" partName="CamShiftTracker.cpp" path="/home/scott/Aerial/aerial_navigation/BalloonTracker/CamShiftTracker.cpp" title="CamShiftTracker.cpp" tooltip="BalloonTracker/CamShiftTracker.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/BalloonTracker/CamShiftTracker.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="103" selectionOffset="8566" selectionTopPixel="4354"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="calib3d.hpp" partName="calib3d.hpp" title="calib3d.hpp" tooltip="/usr/local/include/opencv2/calib3d/calib3d.hpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="/usr/local/include/opencv2/calib3d/calib3d.hpp" project="BalloonTracker"/>
-<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="20024" selectionTopPixel="6273"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="features2d.hpp" partName="features2d.hpp" title="features2d.hpp" tooltip="/usr/local/include/opencv2/features2d/features2d.hpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="/usr/local/include/opencv2/features2d/features2d.hpp" project="BalloonTracker"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="38428" selectionTopPixel="16897"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="core.hpp" partName="core.hpp" title="core.hpp" tooltip="/usr/local/include/opencv2/core/core.hpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="/usr/local/include/opencv2/core/core.hpp" project="BalloonTracker"/>
-<editorState selectionHorizontalPixel="0" selectionLength="20" selectionOffset="86996" selectionTopPixel="39389"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stl_vector.h" partName="stl_vector.h" title="stl_vector.h" tooltip="/usr/include/c++/4.8/bits/stl_vector.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="/usr/include/c++/4.8/bits/stl_vector.h" project="BalloonTracker"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="8240" selectionTopPixel="3740"/>
+<editorState selectionHorizontalPixel="0" selectionLength="3" selectionOffset="6769" selectionTopPixel="4284"/>
 </editor>
 </editors>
 <views>
+<view id="org.eclipse.team.ui.GenericHistoryView" partName="History">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
 <viewState/>
 </view>
@@ -107,18 +90,14 @@
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
 <viewState/>
 </view>
-<view id="com.nvidia.cuda.ide.debug.cudastate" partName="CUDA">
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target">
 <viewState/>
 </view>
-<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target">
+<view id="com.nvidia.cuda.ide.debug.cudastate" partName="CUDA">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="1062" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="159" org.eclipse.ui.ide.severityAndDescriptionField="341"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -189,6 +168,7 @@
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="com.nvidia.viper.analysisview"/>
 <view id="org.eclipse.ui.views.ProgressView"/>
+<view id="org.eclipse.team.ui.GenericHistoryView"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="131072" id="topRight" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
@@ -219,6 +199,7 @@
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.nvidia.viper.analysisview" label="Analysis"/>
 <page content="org.eclipse.ui.views.ProgressView" label="Progress"/>
+<page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
 <page content="org.eclipse.ptp.rdt.sync.ui.SyncMergeFileTableViewer" label="LabelNotFound"/>
 <page content="org.eclipse.rse.ui.view.systemView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -228,6 +209,7 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
@@ -238,7 +220,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.35467127" ratioLeft="410" ratioRight="746" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.22707182" ratioLeft="411" ratioRight="1399" relationship="2" relative="topLeft"/>
 <info folder="true" part="topRight" ratio="0.74934036" ratioLeft="568" ratioRight="190" relationship="2" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
@@ -300,27 +282,18 @@
 <view id="com.nvidia.cuda.ide.debug.cudastate"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.74958634" ratioLeft="1359" ratioRight="454" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.74958634" ratioLeft="1359" ratioRight="454" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7494781" ratioLeft="718" ratioRight="240" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7494781" ratioLeft="718" ratioRight="240" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.cdt.debug.ui.executablesView" label="Executables"/>
@@ -328,8 +301,7 @@
 <page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -337,27 +309,21 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44986072" ratioLeft="323" ratioRight="395" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
-<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.74958634" ratioLeft="1359" ratioRight="454" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.74958634" ratioLeft="1359" ratioRight="454" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.cdt.dsf.gdb.ui.tracecontrol.view" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.4997242" ratioLeft="906" ratioRight="907" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.4997242" ratioLeft="906" ratioRight="907" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
 <page content="com.nvidia.cuda.ide.debug.cudastate" label="CUDA"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.SignalsView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.ModuleView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
@@ -370,160 +336,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/usr/local/include/opencv2/features2d/features2d.hpp" project="BalloonTracker"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BalloonTracker/WicketTracker.cpp"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/usr/local/include/opencv2/core/core.hpp" project="BalloonTracker"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/usr/include/c++/4.8/bits/stl_vector.h" project="BalloonTracker"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BalloonTracker/CamShiftTracker.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BalloonTracker/CamShift.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BalloonTracker/motionTracking.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BalloonTracker/CamShiftTracker.cpp"/>
 </editors>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9710" y="0"/>
+<item historyLabel="CamShift.cpp" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="40" y="0"/>
+</item>
+<item historyLabel="motionTracking.cpp" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="2971" y="172"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="1675" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="3207" y="111"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="1918" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="4872" y="27"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="5977" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="4872" y="27"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="5977" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="6315" y="27"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="8216" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="6893" y="73"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="9561" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="7054" y="27"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="9561" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="8430" y="72"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10194" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="8430" y="72"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10194" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="11038" y="497"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="6134" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="11038" y="497"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="6134" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="9000" y="0"/>
+</item>
+<item historyLabel="CamShiftTracker.cpp" index="1">
+<position info="not_deleted" x="10419" y="72"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
 <position/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9714" y="0"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="4174" y="0"/>
 </item>
-<item historyLabel="core.hpp" index="2">
-<position info="not_deleted" x="86996" y="20"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="4183" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9714" y="0"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10003" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9499" y="0"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="9675" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9499" y="0"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10033" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9557" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9811" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="7438" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
+<item historyLabel="WicketTracker.cpp" index="0">
 <position/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10068" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10084" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10097" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="10119" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="9561" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
 <position/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
+<item historyLabel="WicketTracker.cpp" index="0">
 <position/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="5458" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="4776" y="0"/>
+</item>
+<item historyLabel="WicketTracker.cpp" index="0">
 <position/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="3112" y="7"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="4439" y="0"/>
 </item>
-<item historyLabel="stl_vector.h" index="3">
-<position info="not_deleted" x="8240" y="6"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="568" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="3102" y="6"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="0" y="17132"/>
 </item>
-<item historyLabel="features2d.hpp" index="0">
-<position info="not_deleted" x="38428" y="0"/>
+<item historyLabel="CamShiftTracker.cpp" index="4">
+<position info="not_deleted" x="3266" y="0"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="3102" y="6"/>
+<item historyLabel="WicketTracker.cpp" index="0">
+<position info="not_deleted" x="0" y="17132"/>
 </item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8619" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8622" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8751" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9517" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8037" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8226" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8301" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9476" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9453" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9471" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9474" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="9285" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="11566" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="11543" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8864" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8883" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="8899" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="5921" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="2068" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="4048" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="4078" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="4902" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="4474" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="565" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="4898" y="0"/>
-</item>
-<item historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="5675" y="0"/>
-</item>
-<item active="true" historyLabel="WicketTracker.cpp" index="1">
-<position info="not_deleted" x="5091" y="0"/>
+<item active="true" historyLabel="CamShiftTracker.cpp" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -545,6 +512,21 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CamShiftTracker.cpp" tooltip="BalloonTracker/CamShiftTracker.cpp">
+<persistable path="/BalloonTracker/CamShiftTracker.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="WicketTracker.cpp" tooltip="BalloonTracker/WicketTracker.cpp">
+<persistable path="/BalloonTracker/WicketTracker.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motionTracking.cpp" tooltip="BalloonTracker/motionTracking.cpp">
+<persistable path="/BalloonTracker/motionTracking.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CamShift.cpp" tooltip="BalloonTracker/CamShift.cpp">
+<persistable path="/BalloonTracker/CamShift.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KalmanFilter.cpp" tooltip="BalloonTracker/KalmanFilter.cpp">
+<persistable path="/BalloonTracker/KalmanFilter.cpp"/>
+</file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stl_vector.h" tooltip="/usr/include/c++/4.8/bits/stl_vector.h">
 <persistable path="/usr/include/c++/4.8/bits/stl_vector.h" project="BalloonTracker"/>
 </file>
@@ -557,38 +539,20 @@
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="calib3d.hpp" tooltip="/usr/local/include/opencv2/calib3d/calib3d.hpp">
 <persistable path="/usr/local/include/opencv2/calib3d/calib3d.hpp" project="BalloonTracker"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CamShift.cpp" tooltip="BalloonTracker/CamShift.cpp">
-<persistable path="/BalloonTracker/CamShift.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CamShiftTracker.cpp" tooltip="BalloonTracker/CamShiftTracker.cpp">
-<persistable path="/BalloonTracker/CamShiftTracker.cpp"/>
-</file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpumat.hpp" tooltip="/usr/local/include/opencv2/core/gpumat.hpp">
 <persistable path="/usr/local/include/opencv2/core/gpumat.hpp" project="BalloonTracker"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="GoodFeaturesToTrack.cpp" tooltip="BalloonTracker/GoodFeaturesToTrack.cpp">
 <persistable path="/BalloonTracker/GoodFeaturesToTrack.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motionTracking.cpp" tooltip="BalloonTracker/motionTracking.cpp">
-<persistable path="/BalloonTracker/motionTracking.cpp"/>
-</file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tracking.hpp" tooltip="/usr/local/include/opencv2/video/tracking.hpp">
 <persistable path="/usr/local/include/opencv2/video/tracking.hpp" project="BalloonTracker"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KalmanFilter.cpp" tooltip="BalloonTracker/KalmanFilter.cpp">
-<persistable path="/BalloonTracker/KalmanFilter.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="GuassianOpticalFlow.cpp" tooltip="BalloonTracker/GuassianOpticalFlow.cpp">
 <persistable path="/BalloonTracker/GuassianOpticalFlow.cpp"/>
 </file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpu.hpp" tooltip="/usr/local/include/opencv2/gpu/gpu.hpp">
 <persistable path="/usr/local/include/opencv2/gpu/gpu.hpp" project="BalloonTracker"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="MeanShiftTracker.cpp" tooltip="BalloonTracker/MeanShiftTracker.cpp">
-<persistable path="/BalloonTracker/MeanShiftTracker.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="MeanShiftTracker" tooltip="BalloonTracker/MeanShiftTracker">
-<persistable path="/BalloonTracker/MeanShiftTracker"/>
 </file>
 </mruList>
 </workbench>

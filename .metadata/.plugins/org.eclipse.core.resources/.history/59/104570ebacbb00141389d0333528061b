@@ -1,0 +1,359 @@
+#include "opencv2/video/tracking.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/calib3d/calib3d.hpp"
+#include "opencv2/gpu/gpu.hpp"
+
+#include <iostream>
+#include <ctype.h>
+#include <vector>
+#include <sys/time.h>
+#include <stdio.h>
+
+using namespace cv;
+using namespace cv::gpu;
+using namespace std;
+
+Mat image, frame0, frame1, gray, mask, sh;
+GpuMat gpu_image, gpu_frame0, gpu_frame1, gpu_gray, gpu_mask, gpu_thresh;
+GpuMat prev_points, next_points, flow_status, prev_desc, next_desc;
+vector<GpuMat> train_coll(8), mask_coll(8);
+GpuMat imgColl, maskColl, trainIdx, imgIdx, dist, result;
+vector<vector<KeyPoint> > tkp(8);
+vector<Rect> selections(8);
+const double ransac_thresh = 2.5f; // RANSAC inlier threshold
+const double nn_match_ratio = 0.8f; // Nearest-neighbour matching ratio
+const int thresh = 200;
+int element_shape = MORPH_RECT;
+
+//the address of variable which receives trackbar position update
+int max_iters = 3;
+int open_close_pos = 0;
+int erode_dilate_pos = 0;
+
+Rect selection;
+Point origin;
+bool selectObject = false;
+int trackObject = 0;
+
+
+static void onMouse( int event, int x, int y, int, void* )
+{
+	if( selectObject )
+	{
+		selection.x = MIN(x, origin.x);
+		selection.y = MIN(y, origin.y);
+		selection.width = std::abs(x - origin.x);
+		selection.height = std::abs(y - origin.y);
+
+		selection &= Rect(0, 0, image.cols, image.rows);
+	}
+
+	switch( event )
+	{
+	case CV_EVENT_LBUTTONDOWN:
+		origin = Point(x,y);
+		selection = Rect(x,y,0,0);
+		selectObject = true;
+		break;
+	case CV_EVENT_LBUTTONUP:
+		selectObject = false;
+		if( selection.width > 0 && selection.height > 0 )
+			trackObject = -1;
+		break;
+	}
+}
+long getTimeDelta(struct timeval timea, struct timeval timeb) {
+	return 1000000 * (timeb.tv_sec - timea.tv_sec) +
+			(int(timeb.tv_usec) - int(timea.tv_usec));
+}
+
+int main( int argc, const char** argv )
+{
+
+	VideoCapture cap;
+	Rect trackWindow;
+
+	struct timeval timea, timeb, timeS, timeE;
+	long totalTime = 0, matchTime = 0, convertTime = 0, loadTime = 0;
+	int nFrames = 0;
+
+	//cap.open("/home/scott/Aerial/aerial_navigation/photos/SoccerGoal.MOV");
+	//cap.open("/home/ubuntu/Aerial/photos/SoccerGoal2_464.mp4");
+	cap.open("/home/scott/Aerial//aerial_navigation/photos/SoccerGoal2.mp4");
+//	cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
+//	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);
+	cerr << cap.get(CV_CAP_PROP_FRAME_WIDTH) << endl;
+	cerr << cap.get(CV_CAP_PROP_FRAME_HEIGHT) << endl;
+	vector<string> screenshots;
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh1_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh2_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh3_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh4_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh5_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh6_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh7_464.png");
+//	screenshots.push_back("/home/ubuntu/Aerial/WicketTraining/sh8_464.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh1.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh2.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh3.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh4.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh5.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh6.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh7.png");
+	screenshots.push_back("/home/scott/Aerial/aerial_navigation/WicketTraining/sh8.png");
+
+
+	if( !cap.isOpened() )
+	{
+		cout << "***Could not initialize capturing...***\n";
+		return -1;
+	}
+	gpu::BruteForceMatcher_GPU<Hamming> matcher;
+	vector<vector<DMatch> > matches;
+
+	Mat element = getStructuringElement(element_shape, Size(3, 3), Point(-1, -1) );
+
+	KalmanFilter KF(4, 2, 0);
+	Mat_<float> state(4, 1); /* (x, y, Vx, Vy) */
+	Mat processNoise(4, 1, CV_32F);
+	Mat_<float> measurement(2,1); measurement.setTo(Scalar(0));
+	Point pt(0, 0);
+
+	namedWindow( "Good Features to Track Detector", 0 );
+	setMouseCallback( "Good Features to Track Detector", onMouse, 0 );
+
+	Rect bb;
+
+	bool paused = false;
+	cap >> frame0;
+	paused = true;
+	vector<int> index(8);
+	vector<Point2f> prevPts, nextPts;
+	vector<KeyPoint> kp, pkp, matched3;
+	vector<uchar> status;
+	vector<Point2f> ctr,kal;
+	vector<KeyPoint> inliers1, inliers2;
+	vector<Point2f> matched1, matched2;
+	ctr.push_back(pt);
+	kal.push_back(pt);
+
+	for(int i = 0; i < screenshots.size(); i++){
+		sh = imread(screenshots[i]);
+
+		for(;;){
+
+			gpu_frame0.upload(sh);
+			gpu::cvtColor(gpu_frame0, gpu_gray, COLOR_BGR2GRAY);
+			gpu::threshold(gpu_gray, gpu_thresh, thresh, 255, THRESH_BINARY);
+			gpu::bitwise_and(gpu_gray, gpu_thresh, gpu_gray);
+
+			morphologyEx(gpu_gray, gpu_gray, CV_MOP_OPEN, element);
+
+			gpu_gray.download(image);
+			if(trackObject < 0) {
+
+
+				mask_coll[i] = GpuMat(gpu_gray.size(), CV_8UC1, Scalar::all(0));
+				mask_coll[i](selection).setTo(Scalar::all(255));
+				gpu::bitwise_and(gpu_gray, mask_coll[i], train_coll[i]);
+				train_coll[i] = train_coll[i](selection);
+				selections[i] = selection;
+				index[i] = i;
+				trackObject = 0;
+				selectObject = 0;
+				break;
+			}
+			if( selectObject && selection.width > 0 && selection.height > 0 )
+			{
+				Mat mask(image, selection);
+				bitwise_not(mask, mask);
+			}
+			imshow("Good Features to Track Detector", image);
+			waitKey(5);
+		}
+	}
+	matcher.add(train_coll);
+	matcher.makeGpuCollection(imgColl, maskColl);
+	for(;;)
+	{
+		gettimeofday(&timea, NULL);
+		if( !paused )
+		{
+			gettimeofday(&timeS, NULL);
+			cap >> frame0;
+			gettimeofday(&timeE, NULL);
+			loadTime += getTimeDelta(timeS, timeE);
+			nFrames++;
+			if( frame0.empty() )
+				break;
+		}
+
+
+
+		if( !paused )
+		{
+
+
+			if(trackObject < 0) {
+				Point p = Point(selection.tl().x + (selection.width / 2), selection.tl().y + (selection.height / 2));
+				bb = selection;
+				KF.statePre.at<float>(0) = p.x;
+				KF.statePre.at<float>(1) = p.y;
+				KF.statePre.at<float>(2) = 0;
+				KF.statePre.at<float>(3) = 0;
+				KF.transitionMatrix = *(Mat_<float>(4, 4) << 1,0,0,0,   0,1,0,0,  0,0,1,0,  0,0,0,1);
+
+				setIdentity(KF.measurementMatrix);
+				setIdentity(KF.processNoiseCov, Scalar::all(1e-4));
+				setIdentity(KF.measurementNoiseCov, Scalar::all(1e-4));
+				setIdentity(KF.errorCovPost, Scalar::all(.1));
+
+				ctr.clear();
+				kal.clear();
+
+				trackObject = 1;
+			}
+			if(trackObject){
+
+				Mat prediction = KF.predict();
+				Point predictPt(prediction.at<float>(0),prediction.at<float>(1));
+
+				if(predictPt.x != 0 || predictPt.y != 0){
+					selection.x = predictPt.x - (selection.width/2);
+					selection.y = predictPt.y - (selection.height/2);
+				}
+
+				gettimeofday(&timeS, NULL);
+				gpu_frame0.upload(frame0);
+				gpu::cvtColor(gpu_frame0, gpu_gray, COLOR_BGR2GRAY);
+//				gpu_mask = GpuMat(gpu_gray.size(), CV_8UC1, Scalar::all(0));
+//				gpu_mask(selection).setTo(Scalar::all(255));
+
+				gpu::threshold(gpu_gray, gpu_thresh, thresh, 255, THRESH_BINARY);
+				gpu::bitwise_and(gpu_gray, gpu_thresh, gpu_gray);;
+				morphologyEx(gpu_gray, gpu_gray, CV_MOP_OPEN, element);
+
+
+				gettimeofday(&timeE, NULL);
+				convertTime += getTimeDelta(timeS, timeE);
+				//gpu_gray.download(gray);
+
+
+				double best_max_value = 0;
+				Point best_location;
+				int idx = 0;
+				int itr = 0;
+				gettimeofday(&timeS, NULL);
+
+				for(int i = 0; i < train_coll.size(); i++){
+					itr++;
+					gpu::matchTemplate(gpu_gray, train_coll[index[i]], result, CV_TM_CCORR_NORMED);
+					double max_value;
+					Point location;
+					gpu::minMaxLoc(result, 0, &max_value, 0, &location);
+					if(max_value > best_max_value){
+						best_location = location;
+						best_max_value = max_value;
+						idx = i;
+					}
+					if (max_value > .90){
+						break;
+
+					}
+				}
+				if(idx != 0){
+					int tmp = index.at(idx);
+					for(int i = idx; i > 0; i--){
+						index[i] = index[i-1];
+					}
+					index[0] = tmp;
+				}
+				cerr << itr << " iterations " << best_max_value << endl;
+				gettimeofday(&timeE, NULL);
+				matchTime += getTimeDelta(timeS, timeE);
+
+				if (best_max_value > .8){
+					bb = Rect(best_location.x,best_location.y, selections[index[idx]].width, selections[index[idx]].height);
+
+					Point measp = Point(bb.tl().x + (bb.width / 2), bb.tl().y + (bb.height / 2));
+					measurement(0) = measp.x;
+					measurement(1) = measp.y;
+
+					ctr.push_back(measp);
+
+					Mat estimated = KF.correct(measurement);
+					Point statePt(estimated.at<float>(0),estimated.at<float>(1));
+					kal.push_back(statePt);
+					//selection = Rect(statePt, Point(statePt.x + bb.width, statePt.y + bb.height));
+					selection.x = statePt.x - (bb.width/2);
+					selection.y = statePt.y - (bb.height/2);
+					selection.width = bb.width;
+					selection.height = bb.height;
+
+				}
+			}
+
+
+//			frame0.copyTo(image);
+//			rectangle(image, selection, Scalar(0, 0, 255), 1, 8, 0);
+//			rectangle(gray, selection, Scalar(0, 0, 255), 1, 8, 0);
+//			rectangle(image, bb, Scalar(0, 255, 255), 1, 8, 0);
+//			rectangle(gray, bb, Scalar(0, 255, 255), 1, 8, 0);
+//			circle( image, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+//			circle( gray, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+//			circle( image, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+//			circle( gray, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+//			imshow("lap",gray);
+//			matched1.clear();
+//			matched2.clear();
+//			matched3.clear();
+		}
+
+
+		if( trackObject < 0 ) {
+			paused = false;
+		}
+
+		gettimeofday(&timeb, NULL);
+		totalTime += getTimeDelta(timea, timeb);
+
+		frame0.copyTo(image);
+		rectangle(image, selection, Scalar(0, 0, 255), 1, 8, 0);
+		rectangle(image, bb, Scalar(0, 255, 255), 1, 8, 0);
+		circle( image, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+		circle( image, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+		imshow( "Good Features to Track Detector", image );
+
+		char c = (char)waitKey(10);
+		if( c == 27 )
+			break;
+		switch(c)
+		{
+		case 'c':
+			trackObject = 0;
+			break;
+		case 'p':
+			paused = !paused;
+			cout << "frames                       : " << nFrames << endl;
+			cout << "TotalTime                    : " << double(totalTime)/1000000.0 << endl;
+			cout << "FPS                          : " << double(nFrames)/(double(totalTime)/1000000.0) << endl;
+			cout << "Percentage Convert Time      : " << double(convertTime)/double(totalTime) << endl;
+			cout << "Percentage Match Time        : " << double(matchTime)/double(totalTime) << endl;
+			cout << "Percentage Load Time         : " << double(loadTime)/double(totalTime) << endl;
+			totalTime = matchTime = convertTime = loadTime = 0;
+			nFrames = 0;
+//			frame0.copyTo(image);
+//			rectangle(image, selection, Scalar(0, 0, 255), 1, 8, 0);
+//			rectangle(image, bb, Scalar(0, 255, 255), 1, 8, 0);
+//			circle( image, kal.back(), 4, Scalar(0, 0, 255), -1, 8, 0 );
+//			circle( image, ctr.back(), 4, Scalar(0, 255, 255), -1, 8, 0 );
+//			imshow( "Good Features to Track Detector", image );
+			break;
+		default:
+			;
+		}
+	}
+
+	return 0;
+}

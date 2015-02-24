@@ -6625,3 +6625,12 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.core.resources 2 10035 2015-02-17 18:34:03.135
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2015-02-23 13:23:03.367 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_75
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-23 15:51:39.773
+!MESSAGE Indexed 'WicketTracking' (1 sources, 0 headers) in 0.03 sec: 92 declarations; 295 references; 10 unresolved inclusions; 0 syntax errors; 272 unresolved names (41.27%)
