@@ -34,8 +34,7 @@ using namespace cv::gpu;
 //#define APPLY_HSV_FILTER
 //#define APPLY_BOUNDING_BOX
 #define APPLY_CANNY_EDGE
-//#define APPLY_HOUGH_LIN
-E
+//#define APPLY_HOUGH_LINE
 /********************/
 
 #ifdef RES_480
