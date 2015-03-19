@@ -18,7 +18,6 @@ using namespace std;
 using namespace cv;
 using namespace cv::gpu;
 
-extern Mat gray_edges;
 extern string windowName;
 extern string trackbarWindow;
 

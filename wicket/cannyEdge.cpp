@@ -58,9 +58,6 @@ Mat applyCannyEdge(Mat src)
 	// Applying canny detector
 	Canny( result, result, lowThreshold, lowThreshold*ratio, kernel_size);
 
-	//store result in its current stage in case hough transformation is applied after
-	result.copyTo(gray_edges);
-
 	/// Using Canny's output as a mask, we display our result
 	dst = Scalar::all(0);
 	original.copyTo(dst, result); //mask original image with canny result
