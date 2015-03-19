@@ -1,6 +1,6 @@
 /*
  * Creator: Matthew Lei
- * Last updated: march 19 2015
+ * Last updated: march 20 2015
  * Description:
  * main file for reading an image/video or capturing video feed and applying
  * various transformation filters to achieve wanted effect. Controlling what
@@ -97,25 +97,6 @@ void cameraSetup(VideoCapture &capture)
 	cout << "Width: " << capture.get(CV_CAP_PROP_FRAME_WIDTH) << endl;
 	cout << "Height: " << capture.get(CV_CAP_PROP_FRAME_HEIGHT) << endl;
 }
-
-//useless function. Broken code upon deletion?? weirdest bug I have ever encountered.
-Mat applyOpening(Mat src)
-{
-	Mat dst;
-	int morph_elem = 0;
-	int morph_size = 1;
-	int morph_operator = 0;
-	int const max_operator = 4;
-	int const max_elem = 2;
-	int const max_kernel_size = 21;
-	//not quite sure how this function works yet
-	int operation = morph_operator + 2;
-	Mat element = getStructuringElement( morph_elem, Size( 2*morph_size + 1, 2*morph_size+1 ), Point( morph_size, morph_size ) );
-	//apply opening morphology
-	//morphologyEx(src, dst, operation, element);
-	return dst;
-}
-
 
 /*
  * function to filter/mask orange colors from frame
@@ -311,7 +292,6 @@ Mat applyAll(Mat frame)
 #endif
 	return final;
 }
-
 
 /*
  * main function
