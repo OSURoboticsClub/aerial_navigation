@@ -11,11 +11,42 @@
  */
 #include "cannyEdge.h"
 
+static Mat dst, result;
+static Mat gray_frame;
+static Mat original, final;
+static GpuMat gpuFrame, hold;
+
+static int lowThreshold = 30; //default threshold
+static int const maxThreshold = 100;
+static int ratio = 3;
+static int kernel_size = 3;
+
 /*
  * Callback function for toolbar
  */
 void CannyThreshold(int, void*)
 {
+}
+
+/*
+ * function for applying canny edge
+ * input: 3 channel rgb Mat
+ * output: 3 channel rgb Mat with canny edge mask applied
+ */
+Mat applyCannyEdge(Mat src)
+{
+	src.copyTo(original); //could be gpu optimized?
+    /// Create a matrix of the same type and size as src (for dst)
+	dst.create( src.size(), src.type() );
+
+	/// Convert the image to single-channel grayscale
+	gpuFrame.upload(src);
+	gpu::cvtColor( gpuFrame, hold, CV_BGR2GRAY );
+	hold.download(gray_frame);
+
+	/// Create a Trackbar for user to enter threshold
+	createTrackbar( "Canny Edge Min Threshold:", trackbarWindow.c_str(), &lowThreshold, maxThreshold, CannyThreshold );
+
 #ifndef APPLY_GAUSSIAN_BLUR
     //Increase kernel matrix size for more blur (odd increments) 
 	gpuFrame.upload(gray_frame);
@@ -27,32 +58,15 @@ void CannyThreshold(int, void*)
 	// Applying canny detector
 	Canny( result, result, lowThreshold, lowThreshold*ratio, kernel_size);
 
-	//store result in its current stage in case hough lines is applied after
-	//result.copyTo(gray_edges);
+	//store result in its current stage in case hough transformation is applied after
+	result.copyTo(gray_edges);
 
 	/// Using Canny's output as a mask, we display our result
 	dst = Scalar::all(0);
 	original.copyTo(dst, result); //mask original image with canny result
 	dst.copyTo(final);
 	imshow(windowName.c_str(), final);
-}
 
-Mat applyCannyEdge(Mat src)
-{
-	src.copyTo(original); //could be gpu optimized?
-
-    /// Create a matrix of the same type and size as src (for dst)
-	dst.create( src.size(), src.type() );
-
-	/// Convert the image to grayscale
-	gpuFrame.upload(src);
-	gpu::cvtColor( gpuFrame, hold, CV_BGR2GRAY );
-	hold.download(gray_frame);
-
-	/// Create a Trackbar for user to enter threshold
-	createTrackbar( "Canny Edge Min Threshold:", trackbarWindow.c_str(), &lowThreshold, maxThreshold, CannyThreshold );
-
-	/// Show the image
-	CannyThreshold(0, 0);
+	//CannyThreshold(0, 0);
 	return final;
 }
