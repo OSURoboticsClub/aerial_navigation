@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TrackingFilterTuner/objectTrackingTut.cpp&apos; to &apos;FilterTunner.cpp&apos;" description="Rename resource &apos;objectTrackingTut.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="objectTrackingTut.cpp" name="FilterTunner.cpp" stamp="1426727359439" updateReferences="true"/>
+</session>
