@@ -1,7 +1,7 @@
 /* Keep the webcam from locking up when you interrupt a frame capture */
 //volatile int quit_signal=0;
 
-//#include "opencv2/opencv.hpp"
+#include "opencv2/opencv.hpp"
 #include "opencv2/gpu/gpu.hpp"
 #include <sys/time.h>
 #include <cstdio>
@@ -117,6 +117,9 @@ void captureFrame(VideoCapture &camera, Mat &frame_host, gpu::GpuMat &frame, Mat
 	log("capture frame time used:\t%ld\n", captureTime);
 }
 
+/*
+ * function to convert rgb input frame into three separate HSV channels
+ */
 void convertToHSV(gpu::GpuMat &frame, gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &val) {
 	struct timeval timea, timeb;
 	gpu::GpuMat hsv;
@@ -144,6 +147,9 @@ void convertToHSV(gpu::GpuMat &frame, gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::G
 	log("split planes time used:   \t%ld\n", splitTime);
 }
 
+/*
+ * process separate input channels and applies overlay on candidate contour areas
+ */
 void processFrame(gpu::GpuMat &hue, gpu::GpuMat &sat, gpu::GpuMat &balloonyness, Mat &debugOverlay) {
 	struct timeval timea, timeb;
 	gpu::GpuMat huered, scalehuered, scalesat, thresh;
