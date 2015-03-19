@@ -1,25 +1,38 @@
+/*
+ * Canny Edge Detector
+ * Description:
+ * This file contains the functionality for applying canny edge detector
+ * on an OpenCV Mat structure.
+ * Note:
+ * -Some predefined variables are set in the header file cannyEdge.h
+ * -It is also preferred that Gaussian blur is applied to the incoming
+ * Mat structure before applying canny edge detector to reduce noise. Else,
+ * a regular blur is applied instead.
+ */
 #include "cannyEdge.h"
 
+/*
+ * Callback function for toolbar
+ */
 void CannyThreshold(int, void*)
 {
 #ifndef APPLY_GAUSSIAN_BLUR
-    /// Reduce noise with a kernel 3x3
+    //Increase kernel matrix size for more blur (odd increments) 
 	gpuFrame.upload(gray_frame);
 	gpu::blur( gpuFrame, hold, Size(3,3) );
 	hold.download(result);
 #else
 	gray_frame.copyTo(result);
 #endif
-
-	/// Canny detector
+	// Applying canny detector
 	Canny( result, result, lowThreshold, lowThreshold*ratio, kernel_size);
 
 	//store result in its current stage in case hough lines is applied after
-	result.copyTo(gray_edges);
+	//result.copyTo(gray_edges);
 
 	/// Using Canny's output as a mask, we display our result
 	dst = Scalar::all(0);
-	original.copyTo(dst, result); //mask with result
+	original.copyTo(dst, result); //mask original image with canny result
 	dst.copyTo(final);
 	imshow(windowName.c_str(), final);
 }

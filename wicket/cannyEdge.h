@@ -1,3 +1,12 @@
+/*
+ * Canny Edge Detector header file
+ * Note:
+ * Please set extern variables windowName and trackbarWindow before using
+ * this file, windowName being the window which the resulting Mat will be
+ * shown and trackbarWindow being the window which the slider will appear
+ * in.
+ */
+
 #ifndef CANNY_EDGE_INCLUDED
 #define CANNY_EDGE_INCLUDED
 #include <opencv2/imgproc/imgproc.hpp>
@@ -18,8 +27,6 @@ static Mat gray_frame;
 static Mat original, final;
 static GpuMat gpuFrame, hold;
 
-
-static int edgeThreshold = 1;
 static int lowThreshold = 30; //default threshold
 static int const maxThreshold = 100;
 static int ratio = 3;
